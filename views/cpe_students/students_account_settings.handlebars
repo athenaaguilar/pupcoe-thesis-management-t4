@@ -10,14 +10,14 @@
 <div class="container small">
   <div class="row justify-content-center align-items-center">
     <main class="col-md-12 col-sm-12">
-      <h4>Account Settings</h4><i class="fas fa-user-cog fa-fw"></i></h2>
+      <h4>Account Settings</h4>
       <hr class="botm-line">
       <div class="modal-body mx-auto" style="width: 80%">
         <form method="post" action="/students/settings">
           <div class="form-group">
             Username
             <div class="form-group">
-               <input type="text" name="username" class="form-control" value="" required>
+               <input type="text" name="username" class="form-control" value="Username from Database" required>
             </div>
             Class
             <div class="form-group">
@@ -30,13 +30,16 @@
                </select>
             </div>
             Password
-            <div class="form-group">
-               <input type="text" name="password" class="form-control" value="" required>
+            <div class="input-group">
+               <input id="password_field" type="password" name="password" class="form-control" value="Password from Database" required>
+               <div class="input-group-addon">
+                <span toggle="#password_field" class="fa fa-fw fa-eye see-pw toggle-password"></span>
+               </div>
             </div>
             <div class="pull-right">
               <br>
-              <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#manage_members"><i class="fas fa-user-cog"></i>&nbsp;&nbsp;Manage Member/s</button>
-              <button type="submit" class="btn btn-success btn-sm"><i class="fas fa-paper-plane"></i>&nbsp;&nbsp;Update </button>
+              <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#manage_members"><i class="fas fa-user-edit"></i>&nbsp;&nbsp;Manage Member/s</button>
+              <button type="submit" class="btn btn-success btn-sm"><i class="fa fa-check"></i>&nbsp;&nbsp;Update </button>
             </div>
           </div>
         </form>
@@ -71,15 +74,27 @@
             <tbody>
               <tr>
                 <td>1</td>
-                <td><input type="text" name="fname" class="form-control" value="" required></td>
-                <td><input type="text" name="lname" class="form-control" value="" required></td>
-                <td><input type="text" name="contacts" class="form-control" value="" required></td>
-                <td style="width: 25%"><input type="text" name="email" class="form-control" value="" required></td>
+                <td><input type="text" name="fname" class="form-control" value="FName of Member1" required></td>
+                <td><input type="text" name="lname" class="form-control" value="LName of Member1" required></td>
+                <td><input type="text" name="contacts" class="form-control" value="Contact of Member1" required></td>
+                <td style="width: 25%"><input type="text" name="email" class="form-control" value="Email of Member1" required></td>
                 <td style="width: 11%">
                   <a href=""><button type="button" class="btn btn-success" data-toggle="modal"><i class="fa fa-check"></i></button></a>
                   <a href=""><button type="button" class="btn btn-danger" data-toggle="modal"><i class="fa fa-trash"></i></button></a>
                 </td>
               </tr>
+              <!--For ADD MEMBER-->
+              <tr>
+                <td>2</td>
+                <td><input type="text" name="fname" class="form-control" placeholder="FName of Member2" required></td>
+                <td><input type="text" name="lname" class="form-control" placeholder="LName of Member2" required></td>
+                <td><input type="text" name="contacts" class="form-control" placeholder="Contact of Member2" required></td>
+                <td style="width: 25%"><input type="text" name="email" class="form-control" placeholder="Email of Member2" required></td>
+                <td style="width: 11%">
+                  <a href=""><button type="button" class="btn btn-success" data-toggle="modal"><i class="fa fa-check"></i></button></a>
+                  <a href=""><button type="button" class="btn btn-danger" data-toggle="modal"><i class="fa fa-trash"></i></button></a>
+                </td>
+              </tr><!--For ADD MEMBER-->
             </tbody>
           </table>
           <hr>
@@ -94,3 +109,16 @@
 </div>
 
 {{> footer }}
+
+<!--see password-->
+<script type="text/javascript">
+$(".toggle-password").click(function() {
+  $(this).toggleClass("fa-eye fa-eye-slash");
+  var input = $($(this).attr("toggle"));
+  if (input.attr("type") == "password") {
+    input.attr("type", "text");
+  } else {
+    input.attr("type", "password");
+  }
+});
+</script>

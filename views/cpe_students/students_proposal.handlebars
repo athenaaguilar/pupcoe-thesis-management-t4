@@ -1,22 +1,27 @@
 <head>
-  <title>CpERMS | Title Proposal</title>
+  <title>CpERMS | MOR</title>
   <!-- LOCAL -->
   <link rel="stylesheet" type="text/css" href="../css/style.css">
 </head>
 
 {{> header_students }}
 
-<div class="row justify-content-center align-items-center">
+<div class="d-flex justify-content-center">
   <div class= "well well-width">
     <div class="navbar navbar-static">
       <div class="navbar-collapse collapse">
-        <ul class="nav navbar-nav block">
-          <li class="active"><a data-toggle="pill" href="#title_proposal"><i class="fa fa-user" aria-hidden="true"></i> Title Proposal</a></li>
-          <li><a data-toggle="pill" href="#committee_evaluation"><i class="fa fa-users" aria-hidden="true"></i> Committee Evaluation</a></li>
-        </ul>
+        <!--inside nav-->
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link active" data-toggle="tab" href="#title_proposal" role="tab" aria-selected="true">Title Proposal</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#committee_evaluation" role="tab" aria-selected="false">Committee Evaluation</a>
+          </li>
+        </ul><!--inside nav-->
       </div>
     </div>
-    <hr>
+    <br>
     <div class="tab-content">
       <!--proposal-->
       <div id="title_proposal" class="tab-pane fade in active">
@@ -131,11 +136,11 @@
           <div class="form-group">
             Title:
             <div class="form-group">
-              <input type="text" name="username" class="form-control" value="title" required>
+              <input type="text" name="username" placeholder="Your title here" class="form-control" value="Title from Database" required>
             </div>
             Abstract:
             <div class="form-group">
-              <textarea style="height: 250px" type="text" name="username" class="form-control" value="ABSTRACTTTTTTT" required></textarea>
+              <textarea type="text" style="height: 250px" name="textarea_field" placeholder="Your abstract here" class="form-control">Abstract from Database</textarea>
             </div>
             <hr>
             <div class="pull-right footer">
@@ -163,11 +168,11 @@
           <div class="form-group">
             Title:
             <div class="form-group">
-              <input type="text" name="username" class="form-control" required>
+              <input type="text" name="username" class="form-control" placeholder="Your title here" required>
             </div>
             Abstract:
             <div class="form-group">
-              <textarea style="height: 250px" type="text" name="username" class="form-control" required></textarea>
+              <textarea style="height: 250px" type="text" name="username" class="form-control" placeholder="Your abstract here" required></textarea>
             </div>
             <hr>
             <div class="pull-right footer">
@@ -210,6 +215,9 @@
             </tr>
           </tbody>
         </table>
+        <div class="pull-right footer">
+          <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Close</button>
+        </div>
       </div>
     </div>
   </div>

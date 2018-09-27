@@ -1,5 +1,5 @@
 <head>
-  <title>CpERMS | Design Project I</title>
+  <title>CpERMS | DP I</title>
   <!-- LOCAL -->
   <link rel="stylesheet" type="text/css" href="../css/style.css">
 </head>
@@ -7,7 +7,7 @@
 {{> header_students }}
 
 <!--students dp_i-->
-<div class="row justify-content-center align-items-center">
+<div class="d-flex justify-content-center">
   <div class= "well well-width">
     <div class="container">
       <div class="row justify-content-center align-items-center">
@@ -18,15 +18,15 @@
             <div class="form-group">
               Title:
               <div class="form-group">
-                <input type="text" name="username" class="form-control" value="title" required>
+                <input type="text" name="username" placeholder="Your title here" class="form-control" value="Title from Database" required>
               </div>
               Abstract:
               <div class="form-group">
-                <textarea style="height: 250px" type="text" name="username" class="form-control" value="ABSTRACTTTTTTT" required></textarea>
+                <textarea type="text" style="height: 250px" name="textarea_field" placeholder="Your abstract here" class="form-control">Abstract from Database</textarea>
               </div>
               <hr>
               <div class="pull-right footer">
-                <button type="submit" class="btn btn-success" data-dismiss="modal"><i class="fa fa-pencil"> Update</i></button>
+                <button type="submit" class="btn btn-success" data-dismiss="modal"><i class="fa fa-check"> Update</i></button>
               </div>
             </div>
           </form>
