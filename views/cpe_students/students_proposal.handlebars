@@ -1,0 +1,218 @@
+<head>
+  <title>CpERMS | Title Proposal</title>
+  <!-- LOCAL -->
+  <link rel="stylesheet" type="text/css" href="../css/style.css">
+</head>
+
+{{> header_students }}
+
+<div class="row justify-content-center align-items-center">
+  <div class= "well well-width">
+    <div class="navbar navbar-static">
+      <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav block">
+          <li class="active"><a data-toggle="pill" href="#title_proposal"><i class="fa fa-user" aria-hidden="true"></i> Title Proposal</a></li>
+          <li><a data-toggle="pill" href="#committee_evaluation"><i class="fa fa-users" aria-hidden="true"></i> Committee Evaluation</a></li>
+        </ul>
+      </div>
+    </div>
+    <hr>
+    <div class="tab-content">
+      <!--proposal-->
+      <div id="title_proposal" class="tab-pane fade in active">
+        <div class="container">
+          <div class="row justify-content-center align-items-center">
+            <div class="col-md-12 col-sm-12">
+              <h4>Title Proposal</h4>
+              <hr class="botm-line">
+              <form method="post" action="/students/settings">
+                <table class="table table-striped small">
+                  <thead>
+                    <tr class="info">
+                      <th>Number</th>
+                      <th>Title</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>1</td>
+                      <td>Access Control to Home Devices using Mobile Technology</td>
+                      <td style="width: 25%">
+                        <button type="button" class="btn btn-default btn-sm border_orange" data-toggle="modal" data-target="#view_abstract">View Abstract</button>
+                        <button type="button" class="btn btn-default btn-sm border_orange" data-toggle="modal" data-target="#update_proposal">Update Proposal</button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div class="pull-right">
+                  <br>
+                  <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#add_proposal"><i class="fa fa-plus"></i>&nbsp;&nbsp;Add</button>
+                  <button type="submit" class="btn btn-success btn-sm"><i class="fas fa-paper-plane"></i>&nbsp;&nbsp;Save </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div><!--proposal-->
+      <!--evaluation-->
+      <div id="committee_evaluation" class="tab-pane fade">
+        <div class="container">
+          <div class="row justify-content-center align-items-center">
+            <div class="col-md-12 col-sm-12">
+              <h4>Committee Evaluation</h4>
+              <hr class="botm-line">
+              <table class="table table-striped small">
+                <thead>
+                  <tr class="info">
+                    <th>Number</th>
+                    <th>Title</th>
+                    <th>Evaluation</th>
+                    <th>Submit</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>1</td>
+                    <td>Access Control to Home Devices using Mobile Technology</td>
+                    <td>
+                      <button type="button" class="btn btn-default btn-sm border_orange" data-toggle="modal" data-target="#see_evaluation">See Evaluation</button>
+                    </td>
+                    <td>
+                      <button type="button" class="btn btn-warning btn-sm">Submit</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div><!--evaluation-->
+    </div><!--tab content-->
+  </div><!--well-->
+</div><!--row-->
+
+<!--NO RESULT-->
+<!--h1 class="text-center"><i class="fa fa-search fa-fw"></i>No Result!</h1-->
+
+<!--MODAL-FORM view_abstract-->
+<div class="modal fade small" id="view_abstract" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Title's Abstract</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p class="justify">This research aims to design a diagnostic tool and navigator application for automobiles. The diagnostic tool will use the STN1110 integrated circuit which can interpret vehicle data, including diagnostic trouble codes, malfunction indicator lamp status (MIL), vehicle identification number (VIN), Inspection and Maintenance (I/M) information, In-use Performance Tracking (IPT) and other parameters. The diagnostic tool will be plug into the car’s OBD II port and reads the data from the car's computer system. The data gathered by the tool will be sent to the android phone via Bluetooth. All the information can be viewed through the app's user interface. It can indicate serious issue within the engine. The user can diagnose the problem anytime. He/she can read the error code and learn whether it’s safe to drive the car or should call a tow to prevent further damage.</p>
+        <hr>
+        <div class="pull-right footer">
+          <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--MODAL-FORM update_proposal-->
+<div class="modal fade small" id="update_proposal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Title</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form method="post" action="/students/settings">
+          <div class="form-group">
+            Title:
+            <div class="form-group">
+              <input type="text" name="username" class="form-control" value="title" required>
+            </div>
+            Abstract:
+            <div class="form-group">
+              <textarea style="height: 250px" type="text" name="username" class="form-control" value="ABSTRACTTTTTTT" required></textarea>
+            </div>
+            <hr>
+            <div class="pull-right footer">
+              <button type="submit" class="btn btn-success btn-sm" data-dismiss="modal">Done</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--MODAL-FORM add_proposal-->
+<div class="modal fade small" id="add_proposal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Proposal #2</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form method="post" action="/students/settings">
+          <div class="form-group">
+            Title:
+            <div class="form-group">
+              <input type="text" name="username" class="form-control" required>
+            </div>
+            Abstract:
+            <div class="form-group">
+              <textarea style="height: 250px" type="text" name="username" class="form-control" required></textarea>
+            </div>
+            <hr>
+            <div class="pull-right footer">
+              <button type="submit" class="btn btn-primary btn-sm" data-dismiss="modal">Add</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--MODAL-FORM see_evaluation-->
+<div class="modal fade small" id="see_evaluation" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Title</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h5>Status: <strong>Not yet complete</strong></h5>
+        <table class="table table-striped small">
+          <thead>
+            <tr class="info">
+              <th>Number</th>
+              <th>Committee</th>
+              <th>Decision</th>
+              <th>Comments</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+{{> footer }}

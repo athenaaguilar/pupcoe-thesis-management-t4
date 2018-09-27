@@ -1,0 +1,60 @@
+<head>
+  <title>CpERMS | Design Project I</title>
+  <!-- LOCAL -->
+  <link rel="stylesheet" type="text/css" href="../css/style.css">
+</head>
+
+{{> header_students }}
+
+<!--students dp_i-->
+<div class="row justify-content-center align-items-center">
+  <div class= "well well-width">
+    <div class="container">
+      <div class="row justify-content-center align-items-center">
+        <div class="col-md-12 col-sm-12">
+          <h4>Design Project I</h4>
+          <hr class="botm-line">
+          <form method="post" action="/students/settings" class="small">
+            <div class="form-group">
+              Title:
+              <div class="form-group">
+                <input type="text" name="username" class="form-control" value="title" required>
+              </div>
+              Abstract:
+              <div class="form-group">
+                <textarea style="height: 250px" type="text" name="username" class="form-control" value="ABSTRACTTTTTTT" required></textarea>
+              </div>
+              <hr>
+              <div class="pull-right footer">
+                <button type="submit" class="btn btn-success" data-dismiss="modal"><i class="fa fa-pencil"> Update</i></button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div><!--students dp_i-->
+
+<!--MODAL-FORM view_abstract-->
+<div class="modal fade small" id="view_abstract" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Title's Abstract</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p class="justify">This research aims to design a diagnostic tool and navigator application for automobiles. The diagnostic tool will use the STN1110 integrated circuit which can interpret vehicle data, including diagnostic trouble codes, malfunction indicator lamp status (MIL), vehicle identification number (VIN), Inspection and Maintenance (I/M) information, In-use Performance Tracking (IPT) and other parameters. The diagnostic tool will be plug into the car’s OBD II port and reads the data from the car's computer system. The data gathered by the tool will be sent to the android phone via Bluetooth. All the information can be viewed through the app's user interface. It can indicate serious issue within the engine. The user can diagnose the problem anytime. He/she can read the error code and learn whether it’s safe to drive the car or should call a tow to prevent further damage.</p>
+        <hr>
+        <div class="pull-right footer">
+          <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{{> footer }}

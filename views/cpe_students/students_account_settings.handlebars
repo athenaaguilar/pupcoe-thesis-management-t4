@@ -1,0 +1,96 @@
+<head>
+  <title>CpERMS | Account Settings</title>
+  <!-- LOCAL -->
+  <link rel="stylesheet" type="text/css" href="../css/style.css">
+</head>
+
+{{> header_students }}
+
+<!--students account settings-->
+<div class="container small">
+  <div class="row justify-content-center align-items-center">
+    <main class="col-md-12 col-sm-12">
+      <h4>Account Settings</h4><i class="fas fa-user-cog fa-fw"></i></h2>
+      <hr class="botm-line">
+      <div class="modal-body mx-auto" style="width: 80%">
+        <form method="post" action="/students/settings">
+          <div class="form-group">
+            Username
+            <div class="form-group">
+               <input type="text" name="username" class="form-control" value="" required>
+            </div>
+            Class
+            <div class="form-group">
+               <select style="height: 2.5em" class="form-control" name="class" class="form-control" value="" required>
+                  <option value ="1">1</option>
+                  <option value ="2">2</option>
+                  <option value ="3">3</option>
+                  <option value ="4">4</option>
+                  <option value ="5">5</option>
+               </select>
+            </div>
+            Password
+            <div class="form-group">
+               <input type="text" name="password" class="form-control" value="" required>
+            </div>
+            <div class="pull-right">
+              <br>
+              <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#manage_members"><i class="fas fa-user-cog"></i>&nbsp;&nbsp;Manage Member/s</button>
+              <button type="submit" class="btn btn-success btn-sm"><i class="fas fa-paper-plane"></i>&nbsp;&nbsp;Update </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </main>
+  </div>
+</div><!--students account settings-->
+
+<!--MODAL-FORM-->
+<div class="modal fade small" id="manage_members" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Manage Member/s</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form method="post" action="/students/settings">
+          <table class="table">
+            <thead>
+              <tr class="info">
+                <th>Count</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Contact Number</th>
+                <th>Email Address</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td><input type="text" name="fname" class="form-control" value="" required></td>
+                <td><input type="text" name="lname" class="form-control" value="" required></td>
+                <td><input type="text" name="contacts" class="form-control" value="" required></td>
+                <td style="width: 25%"><input type="text" name="email" class="form-control" value="" required></td>
+                <td style="width: 11%">
+                  <a href=""><button type="button" class="btn btn-success" data-toggle="modal"><i class="fa fa-check"></i></button></a>
+                  <a href=""><button type="button" class="btn btn-danger" data-toggle="modal"><i class="fa fa-trash"></i></button></a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <hr>
+          <div class="pull-right footer">
+            <button type="button" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> Add Member</button>
+            <button type="button" class="btn btn-success btn-sm" data-dismiss="modal"><i class="fa fa-check"></i> Done</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+{{> footer }}
