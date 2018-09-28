@@ -90,6 +90,12 @@ app.get('/admin/schedule', function(req, res) {
 		published: true
 	});
 });
+
+app.get('/admin/settings', function(req, res) {
+	res.render('cpe_admin/admin_account_settings',{
+		published: true
+	});
+});
 //ADMIN---------------------------------------------
 
 //FACULTY---------------------------------------------
@@ -116,6 +122,12 @@ app.get('/faculty/schedule', function(req, res) {
 		published: true
 	});
 });
+
+app.get('/faculty/settings', function(req, res) {
+	res.render('cpe_faculty/faculty_account_settings',{
+		published: true
+	});
+});
 //FACULTY---------------------------------------------
 
 //GUEST PANEL---------------------------------------------
@@ -127,6 +139,12 @@ app.get('/guest_panel/home', function(req, res) {
 
 app.get('/guest_panel/schedule', function(req, res) {
 	res.render('cpe_guest_panel/guest_panel_schedule',{
+		published: true
+	});
+});
+
+app.get('/guest_panel/settings', function(req, res) {
+	res.render('cpe_guest_panel/guest_panel_account_settings',{
 		published: true
 	});
 });

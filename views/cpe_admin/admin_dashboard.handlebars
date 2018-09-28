@@ -14,176 +14,34 @@
         <main role="main">
           <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column white-text">
             <hr>
+            <!--row 1-->
             <div class="container">
               <div class="row">
-                <!--bar graphs-->
-                <div class="col-md-6">
-                  <h5>Students per Year Level</h5><br>
-                  <canvas id="myChartStudents"></canvas>
-                  <script>
-                  var ctx = document.getElementById("myChartStudents").getContext('2d');
-                  var myChartStudents = new Chart(ctx, {
-                    type: 'bar',
-                    data: {
-                        labels: ['1st Year', '2nd Year', '3rd Year', '4th Year'],
-                        datasets: [{
-                            label: 'No. of Students',
-                            data: [140, 110, 120, 130],
-                            backgroundColor:
-                            [
-                                'rgba(255, 99, 132, 0.5)',
-                                'rgba(54, 162, 235, 0.5)',
-                                'rgba(255, 206, 86, 0.5)',
-                                'rgba(54, 66, 222, 0.5)'
-                            ],
-                            borderColor:
-                            [
-                                'rgba(255,99,132,1)',
-                                'rgba(54, 162, 235, 1)',
-                                'rgba(255, 206, 86, 1)',
-                                'rgba(54, 66, 222, 1)'
-                            ],
-                            borderWidth: 1
-                        }]
-                    },
-                    options:
-                    {
-                      legend: {display: false},
-                      tooltips:
-                      {
-                        enabled: true,
-                        mode: 'single',
-                        backgroundColor: 'rgba(0,0,0,0.5)',
-                        titleFontSize: 14,
-                        cornerRadius: 5, 
-                      },
-                      scales:
-                      {
-                        yAxes:
-                        [{
-                          scaleLabel:
-                          {
-                            display: true,
-                            labelString: 'No. of Students',
-                            fontSize: 15,
-                            padding: 12
-                          },
-                          ticks: {beginAtZero: true}
-                        }],
-                        xAxes:
-                        [{
-                          display: true,
-                          scaleLabel:
-                          {
-                            display: true,
-                            labelString: 'Year Level',
-                            fontSize: 15,
-                            padding: 5
-                          },
-                          ticks: {display: true}
-                        }]
-                      }
-                    },
-                  });
-                  Chart.defaults.global.defaultFontColor = 'gray';
-                  </script>
-                </div><!--bar graph-->
-                <!--box-->
+                <!--box number-->
                 <div class="col-md-2">
                   <div class="text-center" style="border-radius: 5px; box-shadow: 4px 4px">
                     <h1 style="font-size: 300%"> 500 </h1>
                     <hr>
-                    <h4>Students</h4><br>
+                    <h4>Accounts</h4><br>
                   </div>
                 </div>
                 <div class="col-md-2">
                   <div class="text-center" style="border-radius: 5px; box-shadow: 4px 4px">
                     <h1 style="font-size: 300%"> 100 </h1>
                     <hr>
-                    <h4>Faculty</h4><br>
+                    <h4>Title Proposals</h4><br>
                   </div>
-                </div><!--box-->
+                </div><!--box number-->
               </div>
-            </div>
-
+            </div><!--row 1-->
             <hr>
-            
+            <!--row 2-->
             <div class="container">
               <div class="row">
-                <!--bar graphs-->
-                <div class="col-md-6">
-                  <h5>Top 3 Most Borrowed Books (Category)</h5><br>
-                  <canvas id="myChartLibrary"></canvas>
-                  <script>
-                  var ctx = document.getElementById("myChartLibrary").getContext('2d');
-                  var myChartLibrary = new Chart(ctx, {
-                    type: 'bar',
-                    data: {
-                        labels: ['Math', 'Science', 'Arts'],
-                        datasets: [{
-                            label: 'Numbers',
-                            data: [22, 10, 9],
-                            backgroundColor:
-                            [
-                                'rgba(255, 99, 132, 0.5)',
-                                'rgba(54, 162, 235, 0.5)',
-                                'rgba(255, 206, 86, 0.5)'
-                            ],
-                            borderColor:
-                            [
-                                'rgba(255,99,132,1)',
-                                'rgba(54, 162, 235, 1)',
-                                'rgba(255, 206, 86, 1)'
-                            ],
-                            borderWidth: 1
-                        }]
-                    },
-                    options:
-                    {
-                      legend: {display: false},
-                      tooltips:
-                      {
-                        enabled: true,
-                        mode: 'single',
-                        backgroundColor: 'rgba(0,0,0,0.5)',
-                        titleFontSize: 14,
-                        cornerRadius: 5, 
-                      },
-                      scales:
-                      {
-                        yAxes:
-                        [{
-                          scaleLabel:
-                          {
-                            display: true,
-                            labelString: 'Numbers',
-                            fontSize: 15,
-                            padding: 12
-                          },
-                          ticks: {beginAtZero: true}
-                        }],
-                        xAxes:
-                        [{
-                          display: true,
-                          scaleLabel:
-                          {
-                            display: true,
-                            labelString: 'Category',
-                            fontSize: 15,
-                            padding: 5
-                          },
-                          ticks: {display: true}
-                        }]
-                      }
-                    },
-                  });
-                  Chart.defaults.global.defaultFontColor = 'gray';
-                  </script>
-                </div><!--bar graph-->
                 <!--pie chart-->
                 <div class="col-md-6">
-                  <h5>School Population</h5>
-                  <div id="piechart_3d" width="100%"></div>
+                  <h5>Title Proposal</h5>
+                  <div id="piechart_3d_title" width="100%"></div>
                   <script>
                   google.charts.load('current', {'packages':['corechart']});
                   google.charts.setOnLoadCallback(drawChart);
@@ -193,11 +51,9 @@
                       var data = google.visualization.arrayToDataTable
                       ([
                       ['Type', 'Numbers'],
-                      ['Students', 500],
-                      ['Advisers', 20],
-                      ['Subject Teacher', 80], 
-                      ['Principal', 1],
-                      ['Librarian', 1]
+                      ['Approved', 30],
+                      ['Approved with Revisions', 40],
+                      ['Disapproved', 10]
                     ]);
 
                     // Optional; add a title and set the width and height of the chart
@@ -211,28 +67,99 @@
                         slices: {
                           0:{color: '#4da6ff'}, 
                           1:{color: '#ffa64d'}, 
-                          2:{color: '#f37274'}, 
-                          3:{color: '#006E51'}, 
-                          4:{color: '#B565A7'}}
+                          2:{color: '#B565A7'}}
                       };
 
                     // Display the chart inside the <div> element with id="piechart"
-                    var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
+                    var chart = new google.visualization.PieChart(document.getElementById('piechart_3d_title'));
                     chart.draw(data, options);
                   }
                   </script>
                 </div><!--pie-->
+                <!--bar graphs-->
+                <div class="col-md-6">
+                  <h5>Groups per Section</h5><br>
+                  <canvas id="myChartStudents"></canvas>
+                  <script>
+                  var ctx = document.getElementById("myChartStudents").getContext('2d');
+                  var myChartStudents = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Section 1', 'Section 2', 'Section 3', 'Section 4', 'Section 5'],
+                        datasets: [{
+                            label: 'Groups',
+                            data: [11, 13, 13, 11, 12],
+                            backgroundColor:
+                            [
+                                'rgba(255, 99, 132, 0.5)',
+                                'rgba(54, 162, 235, 0.5)',
+                                'rgba(255, 206, 86, 0.5)',
+                                'rgba(75, 192, 192, 0.5)',
+                                'rgba(153, 102, 255, 0.5)'
+                            ],
+                            borderColor:
+                            [
+                                'rgba(255,99,132,1)',
+                                'rgba(54, 162, 235, 1)',
+                                'rgba(255, 206, 86, 1)',
+                                'rgba(75, 192, 192, 1)',
+                                'rgba(153, 102, 255, 1)'
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options:
+                    {
+                      legend: {display: false},
+                      tooltips:
+                      {
+                        enabled: true,
+                        mode: 'single',
+                        backgroundColor: 'rgba(0,0,0,0.5)',
+                        titleFontSize: 14,
+                        cornerRadius: 5, 
+                      },
+                      scales:
+                      {
+                        yAxes:
+                        [{
+                          scaleLabel:
+                          {
+                            display: true,
+                            labelString: 'Groups',
+                            fontSize: 15,
+                            padding: 12
+                          },
+                          ticks: {beginAtZero: true}
+                        }],
+                        xAxes:
+                        [{
+                          display: true,
+                          scaleLabel:
+                          {
+                            display: true,
+                            labelString: 'Section',
+                            fontSize: 15,
+                            padding: 5
+                          },
+                          ticks: {display: true}
+                        }]
+                      }
+                    },
+                  });
+                  Chart.defaults.global.defaultFontColor = 'gray';
+                  </script>
+                </div><!--bar graph-->
               </div>
-            </div>
-
+            </div><!--row 2-->
             <hr>
-
+            <!--row 3-->
             <div class="container">
               <div class="row">
                 <!--pie chart-->
                 <div class="col-md-6">
-                  <h5>Grading Status</h5>
-                  <div id="piechart_3d_2" width="100%"></div>
+                  <h5>Design Project I</h5>
+                  <div id="piechart_3d_dp1" width="100%"></div>
                   <script>
                   google.charts.load('current', {'packages':['corechart']});
                   google.charts.setOnLoadCallback(drawChart);
@@ -241,10 +168,10 @@
                   function drawChart() {
                       var data = google.visualization.arrayToDataTable
                       ([
-                      ['Status', 'Numbers'],
-                      ['Encoded', 3],
-                      ['Saved', 4],
-                      ['Not Encoded', 5]
+                      ['Type', 'Numbers'],
+                      ['Passed', 30],
+                      ['Passed with Revisions', 40],
+                      ['Failed', 10]
                     ]);
 
                     // Optional; add a title and set the width and height of the chart
@@ -258,20 +185,19 @@
                         slices: {
                           0:{color: '#4da6ff'}, 
                           1:{color: '#ffa64d'}, 
-                          2:{color: '#f37274'}
-                        }
+                          2:{color: '#B565A7'}}
                       };
 
                     // Display the chart inside the <div> element with id="piechart"
-                    var chart = new google.visualization.PieChart(document.getElementById('piechart_3d_2'));
+                    var chart = new google.visualization.PieChart(document.getElementById('piechart_3d_dp1'));
                     chart.draw(data, options);
                   }
                   </script>
                 </div><!--pie-->
                 <!--pie chart-->
                 <div class="col-md-6">
-                  <h5>Faculty Observation</h5>
-                  <div id="piechart_3d_3" width="100%"></div>
+                  <h5>Design Project II</h5>
+                  <div id="piechart_3d_dp2" width="100%"></div>
                   <script>
                   google.charts.load('current', {'packages':['corechart']});
                   google.charts.setOnLoadCallback(drawChart);
@@ -280,9 +206,10 @@
                   function drawChart() {
                       var data = google.visualization.arrayToDataTable
                       ([
-                      ['Status', 'Numbers'],
-                      ['Observed', 80],
-                      ['Not Observed', 20]
+                      ['Type', 'Numbers'],
+                      ['Passed', 30],
+                      ['Passed with Revisions', 40],
+                      ['Failed', 10]
                     ]);
 
                     // Optional; add a title and set the width and height of the chart
@@ -294,19 +221,19 @@
                         backgroundColor: 'transparent',
                         is3D: true,
                         slices: {
-                          0:{color: '#006E51'}, 
-                          1:{color: '#f37274'}
-                        }
+                          0:{color: '#4da6ff'}, 
+                          1:{color: '#ffa64d'}, 
+                          2:{color: '#B565A7'}}
                       };
 
                     // Display the chart inside the <div> element with id="piechart"
-                    var chart = new google.visualization.PieChart(document.getElementById('piechart_3d_3'));
+                    var chart = new google.visualization.PieChart(document.getElementById('piechart_3d_dp2'));
                     chart.draw(data, options);
                   }
                   </script>
                 </div><!--pie-->
               </div>
-            </div>
+            </div><!--row 3-->
           </div>
         </main>
       </div>

@@ -1,0 +1,62 @@
+<head>
+  <title>CpERMS | Account Settings</title>
+  <!-- LOCAL -->
+  <link rel="stylesheet" type="text/css" href="../css/style.css">
+</head>
+
+{{> header_admin }}
+
+<!--admin account settings-->
+<div class="d-flex justify-content-center">
+  <div class= "well well-width">
+    <div class="container small">
+      <div class="row">
+        <main class="col-md-12 col-sm-12">
+          <h4>Account Settings</h4>
+          <hr class="botm-line">
+          <div class="modal-body mx-auto" style="width: 80%">
+            <form method="post" action="/students/settings">
+              <div class="form-group">
+                First Name
+                <div class="form-group">
+                   <input type="text" name="fname" class="form-control" value="FName from Database" placeholder="Your first name here" required>
+                </div>
+                Last Name
+                <div class="form-group">
+                   <input type="text" name="lname" class="form-control" value="LName from Database" placeholder="Your last name here" required>
+                </div>
+                Contact Number
+                <div class="form-group">
+                   <input type="text" name="contacts" class="form-control" value="Contacts from Database" placeholder="Your contact no. here" required>
+                </div>
+                Email Address
+                <div class="form-group">
+                   <input type="text" name="email" class="form-control" value="Email from Database" placeholder="Your email address here" required>
+                </div>
+                Username
+                <div class="form-group">
+                   <input type="text" name="username" class="form-control" value="Username from Database" placeholder="Your username here" required>
+                </div>
+                Password
+                <div class="input-group">
+                   <input id="password_field" type="password" name="password" class="form-control" value="Password from Database" placeholder="Your password here" required>
+                   <div class="input-group-addon">
+                    <span toggle="#password_field" class="fa fa-fw fa-eye see-pw toggle-password"></span>
+                   </div>
+                </div>
+                <div class="pull-right">
+                  <br>
+                  <button type="submit" class="btn btn-success btn-sm"><i class="fa fa-check"></i>&nbsp;&nbsp;Update </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </main>
+      </div>
+    </div>
+  </div>
+</div><!--admin account settings-->
+
+{{> footer }}
+
+<script type="text/javascript" src="../../js/seepassword.js"></script>

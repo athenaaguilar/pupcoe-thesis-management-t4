@@ -6,8 +6,8 @@
 
 {{> header_students }}
 
-<div class="d-flex justify-content-center">
-  <div class= "well well-width">
+<div class="d-flex justify-content-center small">
+  <div>
     <div class="navbar navbar-static">
       <div class="navbar-collapse collapse">
         <!--inside nav-->
@@ -22,16 +22,16 @@
       </div>
     </div>
     <br>
-    <div class="tab-content">
+    <div class="tab-content well">
       <!--proposal-->
       <div id="title_proposal" class="tab-pane fade in active">
         <div class="container">
           <div class="row justify-content-center align-items-center">
             <div class="col-md-12 col-sm-12">
-              <h4>Title Proposal</h4>
+              <h4>Title Proposal <a class='mor-submit' data-toggle='mor-submit' data-placement='bottom'><i class='fa fa-info-circle'></i></a></h4>
               <hr class="botm-line">
               <form method="post" action="/students/settings">
-                <table class="table table-striped small">
+                <table class="table table-striped">
                   <thead>
                     <tr class="info">
                       <th>Number</th>
@@ -43,9 +43,10 @@
                     <tr>
                       <td>1</td>
                       <td>Access Control to Home Devices using Mobile Technology</td>
-                      <td style="width: 25%">
+                      <td style="width: 30%">
                         <button type="button" class="btn btn-default btn-sm border_orange" data-toggle="modal" data-target="#view_abstract">View Abstract</button>
                         <button type="button" class="btn btn-default btn-sm border_orange" data-toggle="modal" data-target="#update_proposal">Update Proposal</button>
+                        <button type="submit" class="btn btn-success btn-sm"><i class="fas fa-paper-plane"></i>&nbsp;&nbsp;Submit </button>
                       </td>
                     </tr>
                   </tbody>
@@ -53,7 +54,6 @@
                 <div class="pull-right">
                   <br>
                   <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#add_proposal"><i class="fa fa-plus"></i>&nbsp;&nbsp;Add</button>
-                  <button type="submit" class="btn btn-success btn-sm"><i class="fas fa-paper-plane"></i>&nbsp;&nbsp;Save </button>
                 </div>
               </form>
             </div>
@@ -65,15 +65,15 @@
         <div class="container">
           <div class="row justify-content-center align-items-center">
             <div class="col-md-12 col-sm-12">
-              <h4>Committee Evaluation</h4>
+              <h4>Committee Evaluation <a class='mor-proceed' data-toggle='mor-proceed' data-placement='bottom'><i class='fa fa-info-circle'></i></a></h4>
               <hr class="botm-line">
-              <table class="table table-striped small">
+              <table class="table table-striped">
                 <thead>
                   <tr class="info">
                     <th>Number</th>
                     <th>Title</th>
                     <th>Evaluation</th>
-                    <th>Submit</th>
+                    <th>Action</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -84,7 +84,7 @@
                       <button type="button" class="btn btn-default btn-sm border_orange" data-toggle="modal" data-target="#see_evaluation">See Evaluation</button>
                     </td>
                     <td>
-                      <button type="button" class="btn btn-warning btn-sm">Submit</button>
+                      <button type="button" class="btn btn-warning btn-sm"><i class="fa fa-check"></i> Proceed</button>
                     </td>
                   </tr>
                 </tbody>
@@ -97,21 +97,18 @@
   </div><!--well-->
 </div><!--row-->
 
-<!--NO RESULT-->
-<!--h1 class="text-center"><i class="fa fa-search fa-fw"></i>No Result!</h1-->
-
 <!--MODAL-FORM view_abstract-->
 <div class="modal fade small" id="view_abstract" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title">Title's Abstract</h4>
+        <h4 class="modal-title"><strong>Abstract</strong></h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <p class="justify">This research aims to design a diagnostic tool and navigator application for automobiles. The diagnostic tool will use the STN1110 integrated circuit which can interpret vehicle data, including diagnostic trouble codes, malfunction indicator lamp status (MIL), vehicle identification number (VIN), Inspection and Maintenance (I/M) information, In-use Performance Tracking (IPT) and other parameters. The diagnostic tool will be plug into the car’s OBD II port and reads the data from the car's computer system. The data gathered by the tool will be sent to the android phone via Bluetooth. All the information can be viewed through the app's user interface. It can indicate serious issue within the engine. The user can diagnose the problem anytime. He/she can read the error code and learn whether it’s safe to drive the car or should call a tow to prevent further damage.</p>
+        <p class="justify" style="margin: 0 2%">This research aims to design a diagnostic tool and navigator application for automobiles. The diagnostic tool will use the STN1110 integrated circuit which can interpret vehicle data, including diagnostic trouble codes, malfunction indicator lamp status (MIL), vehicle identification number (VIN), Inspection and Maintenance (I/M) information, In-use Performance Tracking (IPT) and other parameters. The diagnostic tool will be plug into the car’s OBD II port and reads the data from the car's computer system. The data gathered by the tool will be sent to the android phone via Bluetooth. All the information can be viewed through the app's user interface. It can indicate serious issue within the engine. The user can diagnose the problem anytime. He/she can read the error code and learn whether it’s safe to drive the car or should call a tow to prevent further damage.</p>
         <hr>
         <div class="pull-right footer">
           <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Close</button>
@@ -126,7 +123,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title">Title</h4>
+        <h4 class="modal-title"><strong>Title</strong></h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -158,7 +155,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title">Proposal #2</h4>
+        <h4 class="modal-title"><strong>Proposal #2</strong></h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -190,14 +187,14 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title">Title</h4>
+        <h4 class="modal-title"><strong>Title</strong></h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
         <h5>Status: <strong>Not yet complete</strong></h5>
-        <table class="table table-striped small">
+        <table class="table table-striped">
           <thead>
             <tr class="info">
               <th>Number</th>
@@ -224,3 +221,8 @@
 </div>
 
 {{> footer }}
+
+<script type="text/javascript" src="../js/popover.js"></script>
+
+<!--NO RESULT-->
+<!--h1 class="text-center"><i class="fa fa-search fa-fw"></i>No Result!</h1-->
