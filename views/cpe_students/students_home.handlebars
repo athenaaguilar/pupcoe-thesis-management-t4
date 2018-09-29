@@ -28,33 +28,50 @@
   </div>
 </div><!--students home-->
 
-<button id="try" type="button" class="btn btn-success btn-sm">TRY POPUP MESSAGE </button>  
-
-<!--NO RESULT-->
+<!--NO RESULT DISPLAY-->
 <h1 class="text-center"><i class="fa fa-search fa-fw"></i>No Result!</h1>
 
-<!--PAGE NOT AVAILABLE-->
+<!--PAGE NOT AVAILABLE DISPLAY-->
 <h1 class="text-center"><i class="fa fa-warning fa-fw"></i>Page not Available</h1>
+
+<!--SUCCESS and ERROR NOTIF-->
+<div class="container">
+  <div class="row justify-content-center align-items-center">
+    <button class="btn btn-success" onclick="alert_success()">SUCCESS</button>
+    <button class="btn btn-danger" onclick="alert_error()">ERROR</button>
+  </div>
+</div>
 
 <div class="container">
   <div class="row justify-content-center align-items-center">
-    <div class="col-md-8 col-sm-8">
-      <div class="alert alert-success fade in" id="success" hidden>
-        <strong>Success!</strong>
-      </div>
-      <div class="alert alert-danger fade in" id="error" hidden>
-        <strong>Error!</strong> 
-      </div>
+    <div class="alert alert-success alert_success" id="success">
+        <a class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Success!</strong>
     </div>
   </div>
-</div>
+</div><!--success-->
+<div class="container">
+  <div class="row justify-content-center align-items-center">
+    <div class="alert alert-danger alert_error" id="danger">
+        <a class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Error!</strong>
+    </div>
+  </div><!--error-->
 
 {{> footer }}
 
 <script type="text/javascript">
-$(document).ready(function(){
-  $('button#try').click(function() {
+function alert_success(){
+  $(".alert_success").show().delay(1000);
+  setTimeout(function(){
+    $(".alert_success").fadeOut().delay(1000); 
+  }, 1000);
+}
 
-  });
-});
-</script>
+function alert_error(){
+  $(".alert_error").show().delay(1000);
+  setTimeout(function(){
+    $(".alert_error").fadeOut().delay(1000); 
+  }, 1000);
+}
+</script><!--SUCCESS and ERROR NOTIF-->
+
+

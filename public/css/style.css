@@ -1,3 +1,17 @@
+.no-click {
+    pointer-events: none;
+}
+
+.alert_success, .alert_error {
+    position: fixed;
+    bottom: 1%;
+    width: 80%;
+}
+
+.alert {
+    display: none;
+}
+
 .center th, .center td {
     text-align: center;
 }
