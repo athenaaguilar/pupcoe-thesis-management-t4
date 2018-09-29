@@ -7,14 +7,49 @@
 {{> header_admin }}
 
 <!--admin registration-->
-<div class="d-flex justify-content-center">
-  <div class= "well well-width">
-    <div class="container">
-      <div class="row justify-content-center align-items-center">
-        <div class="col-md-12 col-sm-12">
-          <h4>Registration</h4>
-          <hr class="botm-line">
+<div class="container">
+  <div class="row justify-content-center align-items-center">
+    <div class="col-md-6 col-sm-6">
+      <div class="row box">
+        <div class="col-md-12">
+          <div class="text-center">
+            <h3>User Registration</h3>
+            <hr class="redline">
+          </div>
           <form method="POST" action="reg">
+            <!--usertype class batch-->
+            <div class="row form-group">
+              <div class="col-sm-4">
+                <label class="sr-only" for="user_class">Usertype</label>
+                <select style="height: 2.5em" class="form-control gray" name="class" id="user_class" required>
+                  <option hidden>Usertype</option>
+                  <option value ="1">Student</option>
+                  <option value ="2">Faculty</option>
+                  <option value ="3">Guest Panel</option>
+                  <option value ="4">Admin</option>
+                </select>
+              </div>
+              <div class="col-sm-4">
+                <label class="sr-only" for="user_class">Class</label>
+                <select style="height: 2.5em" class="form-control gray" name="class" id="user_class" required>
+                  <option hidden>Class</option>
+                  <option value ="1">1 </option>
+                  <option value ="2">2</option>
+                  <option value ="3">3</option>
+                  <option value ="4">4</option>
+                  <option value ="4">5</option>
+                </select>
+              </div>
+              <div class="col-sm-4">
+                <label class="sr-only" for="user_class">Academic Year</label>
+                <select style="height: 2.5em" class="form-control gray" name="class" id="user_class" required>
+                  <option hidden>Batch</option>
+                  <option value ="1">2018</option>
+                  <option value ="2">2019</option>
+                  <option value ="3">2020</option>
+                </select>
+              </div>
+            </div><!--usertype class batch-->
             <div class="form-group">
                <label class="sr-only" for="first_name">First Name</label>
                <input type="name" name="fname" class="form-control" id="first_name" placeholder="First Name" required>
@@ -36,20 +71,11 @@
                <input type="text" name="username" class="form-control" id="user_username" placeholder="Username" required>
             </div>
             <div class="form-group">
-               <label class="sr-only" for="user_class">Class</label>
-               <select style="height: 2.5em" class="form-control gray" name="class" class="form-control" id="user_class" required>
-                  <option hidden>Usertype</option>
-                  <option value ="1">Faculty</option>
-                  <option value ="2">Guest Panel</option>
-                  <option value ="3">Admin</option>
-               </select>
-            </div>
-            <div class="form-group">
                <label class="sr-only" for="user_password">Password</label>
                <input type="text" name="password" class="form-control" id="user_password" placeholder="Password" required>
             </div>
             <div class="form-group">
-               <button type="submit" class="btn btn-success pull-right" id="loading" data-loading-text="<i class='fa fa-spinner fa-spin '></i> Please wait...">Register</button>
+               <button type="submit" class="btn btn-success pull-right" id="loading" data-loading-text="<i class='fa fa-spinner fa-spin '></i> Please wait..."><i class="fa fa-paper-plane"></i> Register</button>
             </div>
           </form>
         </div>

@@ -32,9 +32,9 @@
               <h4>For Review</h4>
               <hr class="botm-line">
               <form method="post" action="/students/settings">
-                <table class="table table-striped">
+                <table class="table table-striped table-bordered table-hover">
                   <thead>
-                    <tr class="info">
+                    <tr class="info center">
                       <th>Number</th>
                       <th>Members</th>
                       <th>Title</th>
@@ -42,11 +42,11 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
+                    <tr class="center">
                       <td>1</td>
                       <td>4</td>
                       <td>Access Control to Home Devices using Mobile Technology</td>
-                      <td style="width: 10%">
+                      <td style="width: 15%">
                         <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#review"><i class="fa fa-eye"></i> Review</button>
                       </td>
                       </tr>
@@ -64,17 +64,17 @@
             <div class="col-md-12 col-sm-12">
               <h4>Reviewed</h4>
               <hr class="botm-line">
-              <table class="table table-striped">
+              <table class="table table-striped table-bordered table-hover">
                 <thead>
-                  <tr class="info">
+                  <tr class="info center">
                     <th>Number</th>
                     <th>Members</th>
                     <th>Title</th>
-                    <th>Decision</th>
+                    <th>Status</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
+                  <tr class="center">
                     <td>1</td>
                     <td>4</td>
                     <td>Access Control to Home Devices using Mobile Technology</td>
@@ -102,13 +102,13 @@
         </button>
       </div>
       <div class="modal-body">
-        <i><h4>Approved by: <strong>Faculty Name</strong></h4></i>
-        <hr>
+        <h4>Approved by: <strong>Faculty Name</strong></h4>
+        <br>
         <!--abtract-->
         <h4 class="modal-title">Abstract</h4><br>
         <p class="justify" style="margin: 0 2%">This research aims to design a diagnostic tool and navigator application for automobiles. The diagnostic tool will use the STN1110 integrated circuit which can interpret vehicle data, including diagnostic trouble codes, malfunction indicator lamp status (MIL), vehicle identification number (VIN), Inspection and Maintenance (I/M) information, In-use Performance Tracking (IPT) and other parameters. The diagnostic tool will be plug into the car’s OBD II port and reads the data from the car's computer system. The data gathered by the tool will be sent to the android phone via Bluetooth. All the information can be viewed through the app's user interface. It can indicate serious issue within the engine. The user can diagnose the problem anytime. He/she can read the error code and learn whether it’s safe to drive the car or should call a tow to prevent further damage.</p>
-        <hr><!--abtract-->
-        <!--comments and decision-->
+        <br><!--abtract-->
+        <!--comments and status-->
         <form method="post" action="/students/settings">
           <div class="form-group">
             <div class="form-group">
@@ -116,18 +116,18 @@
             </div>
             <div class="form-group">
              <select style="height: 2.5em" class="form-control gray" name="class" class="form-control" id="user_class" required>
-                <option hidden>Decision</option>
+                <option hidden>Status</option>
                 <option value ="1">Approved</option>
                 <option value ="2">Approved with Revisions</option>
                 <option value ="2">Disapproved</option>
              </select>
             </div>
-            <hr>
             <div class="pull-right footer">
-              <button type="submit" class="btn btn-success btn-sm" data-dismiss="modal"><i class="fa fa-check"></i> Done</button>
+              <button type="button" class="btn btn-success btn-sm" data-dismiss="modal" id="loading" data-loading-text="<i class='fa fa-spinner fa-spin'></i> Please wait..."> Done</button>
+              <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
             </div>
           </div>
-        </form><!--comments and decision-->
+        </form><!--comments and status-->
       </div>
     </div>
   </div>

@@ -17,15 +17,21 @@
           <div class="modal-body mx-auto" style="width: 80%">
             <form method="post" action="/students/settings">
               <div class="form-group">
-                Class
+                First Name
                 <div class="form-group">
-                   <select style="height: 2.5em" class="form-control" name="class" class="form-control" value="" required>
-                      <option value ="1">1</option>
-                      <option value ="2">2</option>
-                      <option value ="3">3</option>
-                      <option value ="4">4</option>
-                      <option value ="5">5</option>
-                   </select>
+                   <input type="text" name="fname" class="form-control" value="FName from Database" placeholder="Your first name here" required>
+                </div>
+                Last Name
+                <div class="form-group">
+                   <input type="text" name="lname" class="form-control" value="LName from Database" placeholder="Your last name here" required>
+                </div>
+                Contact Number
+                <div class="form-group">
+                   <input type="text" name="contacts" class="form-control" value="Contacts from Database" placeholder="Your contact no. here" required>
+                </div>
+                Email Address
+                <div class="form-group">
+                   <input type="text" name="email" class="form-control" value="Email from Database" placeholder="Your email address here" required>
                 </div>
                 Username
                 <div class="form-group">
@@ -40,7 +46,6 @@
                 </div>
                 <div class="pull-right">
                   <br>
-                  <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#manage_members"><i class="fas fa-user-edit"></i>&nbsp;&nbsp;Manage Member/s</button>
                   <button type="submit" class="btn btn-success btn-sm"><i class="fa fa-check"></i>&nbsp;&nbsp;Update </button>
                 </div>
               </div>
@@ -51,66 +56,6 @@
     </div>
   </div>
 </div><!--students account settings-->
-
-<!--MODAL-FORM-->
-<div class="modal fade small" id="manage_members" tabindex="-1" role="dialog" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title">Manage Member/s</h4>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form method="post" action="/students/settings">
-          <table class="table">
-            <thead>
-              <tr class="info">
-                <th>Count</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Contact Number</th>
-                <th>Email Address</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>1</td>
-                <td><input type="text" name="fname" class="form-control" value="FName of Member1" placeholder="First name here" required></td>
-                <td><input type="text" name="lname" class="form-control" value="LName of Member1" placeholder="Last name here" required></td>
-                <td><input type="text" name="contacts" class="form-control" value="Contact of Member1" placeholder="Contact No. here" required></td>
-                <td style="width: 25%"><input type="text" name="email" class="form-control" value="Email of Member1" placeholder="Email address here" required></td>
-                <td style="width: 11%">
-                  <a href=""><button type="button" class="btn btn-success" data-toggle="modal"><i class="fa fa-check"></i></button></a>
-                  <a href=""><button type="button" class="btn btn-danger" data-toggle="modal"><i class="fa fa-trash"></i></button></a>
-                </td>
-              </tr>
-              <!--For ADD MEMBER-->
-              <tr>
-                <td>2</td>
-                <td><input type="text" name="fname" class="form-control" placeholder="FName of Member2" required></td>
-                <td><input type="text" name="lname" class="form-control" placeholder="LName of Member2" required></td>
-                <td><input type="text" name="contacts" class="form-control" placeholder="Contact of Member2" required></td>
-                <td style="width: 25%"><input type="text" name="email" class="form-control" placeholder="Email of Member2" required></td>
-                <td style="width: 11%">
-                  <a href=""><button type="button" class="btn btn-success" data-toggle="modal"><i class="fa fa-check"></i></button></a>
-                  <a href=""><button type="button" class="btn btn-danger" data-toggle="modal"><i class="fa fa-trash"></i></button></a>
-                </td>
-              </tr><!--For ADD MEMBER-->
-            </tbody>
-          </table>
-          <hr>
-          <div class="pull-right footer">
-            <button type="button" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> Add Member</button>
-            <button type="button" class="btn btn-success btn-sm" data-dismiss="modal"><i class="fa fa-check"></i> Done</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
 
 {{> footer }}
 

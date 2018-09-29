@@ -4,9 +4,9 @@
   <link rel="stylesheet" type="text/css" href="../css/style.css">
 </head>
 
-{{> header_admin }}
+{{> header_faculty }}
 
-<!--admin dashboard-->
+<!--faculty home-->
 <div class="d-flex justify-content-center">
   <div class= "well well-width">
     <div class="container">
@@ -18,27 +18,6 @@
         <main role="main">
           <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column white-text">
             <!--row 1-->
-            <div class="container">
-              <div class="row">
-                <!--box number-->
-                <div class="col-md-2">
-                  <div class="text-center" style="border-radius: 5px; box-shadow: 4px 4px">
-                    <h1 style="font-size: 300%"> 500 </h1>
-                    <hr>
-                    <h4>Accounts</h4><br>
-                  </div>
-                </div>
-                <div class="col-md-2">
-                  <div class="text-center" style="border-radius: 5px; box-shadow: 4px 4px">
-                    <h1 style="font-size: 300%"> 100 </h1>
-                    <hr>
-                    <h4>Title Proposals</h4><br>
-                  </div>
-                </div><!--box number-->
-              </div>
-            </div><!--row 1-->
-            <hr>
-            <!--row 2-->
             <div class="container">
               <div class="row">
                 <!--pie chart-->
@@ -154,94 +133,12 @@
                   </script>
                 </div><!--bar graph-->
               </div>
-            </div><!--row 2-->
-            <hr>
-            <!--row 3-->
-            <div class="container">
-              <div class="row">
-                <!--pie chart-->
-                <div class="col-md-6">
-                  <h5>Design Project I</h5>
-                  <div id="piechart_3d_dp1" width="100%"></div>
-                  <script>
-                  google.charts.load('current', {'packages':['corechart']});
-                  google.charts.setOnLoadCallback(drawChart);
-                    
-                  // Draw the chart and set the chart values
-                  function drawChart() {
-                      var data = google.visualization.arrayToDataTable
-                      ([
-                      ['Type', 'Numbers'],
-                      ['Passed', 30],
-                      ['Passed with Revisions', 40],
-                      ['Failed', 10]
-                    ]);
-
-                    // Optional; add a title and set the width and height of the chart
-                    var options =
-                      {
-                        chartArea: {left:0, top:0, bottom:0, right:150},
-                        legend: {position: 'right', alignment: 'center', textStyle: {fontSize: 15}},
-                        tooltip: {isHtml: true},
-                        backgroundColor: 'transparent',
-                        is3D: true,
-                        slices: {
-                          0:{color: '#4da6ff'}, 
-                          1:{color: '#ffa64d'}, 
-                          2:{color: '#B565A7'}}
-                      };
-
-                    // Display the chart inside the <div> element with id="piechart"
-                    var chart = new google.visualization.PieChart(document.getElementById('piechart_3d_dp1'));
-                    chart.draw(data, options);
-                  }
-                  </script>
-                </div><!--pie-->
-                <!--pie chart-->
-                <div class="col-md-6">
-                  <h5>Design Project II</h5>
-                  <div id="piechart_3d_dp2" width="100%"></div>
-                  <script>
-                  google.charts.load('current', {'packages':['corechart']});
-                  google.charts.setOnLoadCallback(drawChart);
-                    
-                  // Draw the chart and set the chart values
-                  function drawChart() {
-                      var data = google.visualization.arrayToDataTable
-                      ([
-                      ['Type', 'Numbers'],
-                      ['Passed', 30],
-                      ['Passed with Revisions', 40],
-                      ['Failed', 10]
-                    ]);
-
-                    // Optional; add a title and set the width and height of the chart
-                    var options =
-                      {
-                        chartArea: {left:0, top:0, bottom:0, right:150},
-                        legend: {position: 'right', alignment: 'center', textStyle: {fontSize: 15}},
-                        tooltip: {isHtml: true},
-                        backgroundColor: 'transparent',
-                        is3D: true,
-                        slices: {
-                          0:{color: '#4da6ff'}, 
-                          1:{color: '#ffa64d'}, 
-                          2:{color: '#B565A7'}}
-                      };
-
-                    // Display the chart inside the <div> element with id="piechart"
-                    var chart = new google.visualization.PieChart(document.getElementById('piechart_3d_dp2'));
-                    chart.draw(data, options);
-                  }
-                  </script>
-                </div><!--pie-->
-              </div>
-            </div><!--row 3-->
+            </div><!--row 1-->
           </div>
         </main>
       </div>
     </div>
   </div>
-</div><!--admin dashboard-->
+</div><!--faculty home-->
 
 {{> footer }}

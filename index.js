@@ -99,20 +99,32 @@ app.get('/admin/settings', function(req, res) {
 //ADMIN---------------------------------------------
 
 //FACULTY---------------------------------------------
-app.get('/faculty/home', function(req, res) {
-	res.render('cpe_faculty/faculty_home',{
-		published: true
-	});
-});
-
-app.get('/faculty/advisory', function(req, res) {
-	res.render('cpe_faculty/faculty_advisory',{
+app.get('/faculty/dashboard', function(req, res) {
+	res.render('cpe_faculty/faculty_dashboard',{
 		published: true
 	});
 });
 
 app.get('/faculty/proposals', function(req, res) {
 	res.render('cpe_faculty/faculty_proposals',{
+		published: true
+	});
+});
+
+app.get('/faculty/mor', function(req, res) {
+	res.render('cpe_faculty/faculty_mor',{
+		published: true
+	});
+});
+
+app.get('/faculty/dp1', function(req, res) {
+	res.render('cpe_faculty/faculty_dp_1',{
+		published: true
+	});
+});
+
+app.get('/faculty/dp2', function(req, res) {
+	res.render('cpe_faculty/faculty_dp_2',{
 		published: true
 	});
 });
@@ -137,6 +149,24 @@ app.get('/guest_panel/home', function(req, res) {
 	});
 });
 
+app.get('/guest_panel/mor', function(req, res) {
+	res.render('cpe_guest_panel/guest_panel_mor',{
+		published: true
+	});
+});
+
+app.get('/guest_panel/dp1', function(req, res) {
+	res.render('cpe_guest_panel/guest_panel_dp_1',{
+		published: true
+	});
+});
+
+app.get('/guest_panel/dp2', function(req, res) {
+	res.render('cpe_guest_panel/guest_panel_dp_2',{
+		published: true
+	});
+});
+
 app.get('/guest_panel/schedule', function(req, res) {
 	res.render('cpe_guest_panel/guest_panel_schedule',{
 		published: true
@@ -151,20 +181,14 @@ app.get('/guest_panel/settings', function(req, res) {
 //GUEST PANEL---------------------------------------------
 
 //STUDENT---------------------------------------------
-app.get('/signup', function(req, res) {
-	res.render('cpe_students/students_signup',{
-		published: true
-	});
-});
-
 app.get('/students/home', function(req, res) {
 	res.render('cpe_students/students_home',{
 		published: true
 	});
 });
 
-app.get('/students/proposal', function(req, res) {
-	res.render('cpe_students/students_proposal',{
+app.get('/students/mor', function(req, res) {
+	res.render('cpe_students/students_mor',{
 		published: true
 	});
 });

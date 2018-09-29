@@ -15,19 +15,19 @@
           <h4>Guest Panel</h4>
           <hr class="botm-line">
           <form method="post" action="/students/settings">
-            <table class="table table-striped">
+            <table class="table table-striped table-bordered table-hover">
               <thead>
-                <tr class="info">
-                  <th>Number</th>
+                <tr class="info center">
+                  <th  style="width: 15%">Number</th>
                   <th>Name</th>
-                  <th>Action</th>
+                  <th  style="width: 20%">Action</th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
+                <tr class="center">
                   <td>1</td>
                   <td></td>
-                  <td style="width: 10%">
+                  <td>
                     <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#update"><i class="fa fa-eye"></i></button>
                     <button type="button" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button>
                   </td>
@@ -79,57 +79,13 @@
           </div>
           <div class="pull-right">
             <br>
-            <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
-
-<!--div class="d-flex justify-content-center small">
-  <div class= "well well-width">
-    <div class="container">
-      <div class="row justify-content-center align-items-center">
-        <div class="col-md-12 col-sm-12">
-          <h4>Guest Panel</h4>
-          <hr class="botm-line">
-          <form method="post" action="/students/settings">
-            <div class="form-group">
-              Name
-              <div class="form-group">
-                 <input type="text" name="name" class="form-control" value="Name from Database" placeholder="Your name here" disabled>
-              </div>
-              Contact Number
-              <div class="form-group">
-                 <input type="text" name="contacts" class="form-control" value="Contact Number from Database" placeholder="Your contact number here" disabled>
-              </div>
-              Email Address
-              <div class="form-group">
-                 <input type="text" name="email" class="form-control" value="Email Address from Database" placeholder="Your email address here" disabled>
-              </div>
-              Username
-              <div class="form-group">
-                 <input type="text" name="username" class="form-control" value="Username from Database" placeholder="Your username here" disabled>
-              </div>
-              Password
-              <div class="input-group">
-                 <input id="password_field" type="password" name="password" class="form-control" value="Password from Database" placeholder="Your password here" disabled>
-                 <div class="input-group-addon">
-                  <span toggle="#password_field" class="fa fa-fw fa-eye see-pw toggle-password"></span>
-                 </div>
-              </div>
-              <div class="pull-right">
-                <br>
-                <button type="submit" class="btn btn-success btn-sm" data-dismiss="modal">Update</button>
-              </div>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-</div-->
 
 {{> footer }}
 

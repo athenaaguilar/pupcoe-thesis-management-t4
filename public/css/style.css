@@ -1,13 +1,13 @@
+.center th, .center td {
+    text-align: center;
+}
+
 .gray {
     color: gray
 }
 
 .well-width {
     width: 95%;
-}
-
-.border_orange {
-    border-color: rgba(247, 147, 26, .5);
 }
 
 .modal-content {
