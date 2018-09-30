@@ -142,6 +142,50 @@ app.get('/faculty/settings', function(req, res) {
 });
 //FACULTY---------------------------------------------
 
+//ADVISER---------------------------------------------
+app.get('/adviser/dashboard', function(req, res) {
+	res.render('cpe_adviser/adviser_dashboard',{
+		published: true
+	});
+});
+
+app.get('/adviser/proposals', function(req, res) {
+	res.render('cpe_adviser/adviser_proposals',{
+		published: true
+	});
+});
+
+app.get('/adviser/mor', function(req, res) {
+	res.render('cpe_adviser/adviser_mor',{
+		published: true
+	});
+});
+
+app.get('/adviser/dp1', function(req, res) {
+	res.render('cpe_adviser/adviser_dp_1',{
+		published: true
+	});
+});
+
+app.get('/adviser/dp2', function(req, res) {
+	res.render('cpe_adviser/adviser_dp_2',{
+		published: true
+	});
+});
+
+app.get('/adviser/schedule', function(req, res) {
+	res.render('cpe_adviser/adviser_schedule',{
+		published: true
+	});
+});
+
+app.get('/adviser/settings', function(req, res) {
+	res.render('cpe_adviser/adviser_account_settings',{
+		published: true
+	});
+});
+//ADVISER---------------------------------------------
+
 //GUEST PANEL---------------------------------------------
 app.get('/guest_panel/home', function(req, res) {
 	res.render('cpe_guest_panel/guest_panel_home',{

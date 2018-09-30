@@ -12,7 +12,7 @@
     <div class="navbar navbar-static">
       <div class="navbar-collapse collapse">
         <!--inside nav-->
-        <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <ul class="nav nav-tabs" role="tablist">
           <li class="nav-item">
             <a class="nav-link active" data-toggle="tab" href="#section" role="tab" aria-selected="true">Section 1</a>
           </li>
@@ -109,15 +109,7 @@
             <div class="form-group">
                <input type="text" name="username" class="form-control" value="Username from Database" placeholder="Your username here" disabled>
             </div>
-            Password
-            <div class="input-group">
-               <input id="password_field" type="password" name="password" class="form-control" value="Password from Database" placeholder="Your password here" disabled>
-               <div class="input-group-addon">
-                <span toggle="#password_field" class="fa fa-fw fa-eye see-pw toggle-password"></span>
-               </div>
-            </div>
             <div class="pull-right">
-              <br>
               <button type="button" class="btn btn-success btn-sm" data-dismiss="modal" id="loading" data-loading-text="<i class='fa fa-spinner fa-spin '></i> Please wait..."> Update</button>
               <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
             </div>
@@ -129,5 +121,3 @@
 </div>
 
 {{> footer }}
-
-<script type="text/javascript" src="../../js/seepassword.js"></script>

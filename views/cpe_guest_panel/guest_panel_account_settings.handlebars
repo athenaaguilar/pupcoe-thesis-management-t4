@@ -21,6 +21,10 @@
                 <div class="form-group">
                    <input type="text" name="fname" class="form-control" value="FName from Database" placeholder="Your first name here" required>
                 </div>
+                Middle Name
+                <div class="form-group">
+                   <input type="text" name="mname" class="form-control" value="MName from Database" placeholder="Your middle name here" required>
+                </div>
                 Last Name
                 <div class="form-group">
                    <input type="text" name="lname" class="form-control" value="LName from Database" placeholder="Your last name here" required>
@@ -37,15 +41,10 @@
                 <div class="form-group">
                    <input type="text" name="username" class="form-control" value="Username from Database" placeholder="Your username here" required>
                 </div>
-                Password
-                <div class="input-group">
-                   <input id="password_field" type="password" name="password" class="form-control" value="Password from Database" placeholder="Your password here" required>
-                   <div class="input-group-addon">
-                    <span toggle="#password_field" class="fa fa-fw fa-eye see-pw toggle-password"></span>
-                   </div>
+                <div class="form-group">
+                  <button type="button" class="btn btn-primary btn-block btn-sm" data-toggle="modal" data-target="#change_password">Change Password?</button>
                 </div>
                 <div class="pull-right">
-                  <br>
                   <button type="submit" class="btn btn-success btn-sm"><i class="fa fa-check"></i>&nbsp;&nbsp;Update </button>
                 </div>
               </div>
@@ -55,7 +54,46 @@
       </div>
     </div>
   </div>
-</div><!--guest_panel account settings-->
+</div><!--admin account settings-->
+
+<!--MODAL-FORM change_password-->
+<div class="modal fade small" id="change_password" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title"><strong> Change Password</strong></h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form method="post" action="/students/settings">
+          <div class="form-group input-group">
+             <input type="password" name="password_old" class="form-control" id="user_password_old" placeholder="Old Password" required>
+             <div class="input-group-addon">
+                <span toggle="#user_password_old" class="fa fa-fw fa-eye see-pw toggle-password"></span>
+             </div>
+          </div>
+          <div class="form-group input-group">
+            <input type="password" name="password1" class="form-control" id="user_password1" placeholder="New Password" required>
+            <div class="input-group-addon">
+              <span toggle="#user_password1" class="fa fa-fw fa-eye see-pw toggle-password"></span>
+            </div>
+          </div>
+          <div class="form-group input-group">
+            <input type="password" name="password2" class="form-control" id="user_password2" placeholder="Confirm New Password" required>
+            <div class="input-group-addon">
+              <span toggle="#user_password2" class="fa fa-fw fa-eye see-pw toggle-password"></span>
+            </div>
+          </div>
+          <div class="form-group">
+             <button type="submit" class="btn btn-primary pull-right btn-sm" id="loading" data-loading-text="<i class='fa fa-spinner fa-spin '></i> Please wait..."><i class="fa fa-check"></i> Change</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
 
 {{> footer }}
 

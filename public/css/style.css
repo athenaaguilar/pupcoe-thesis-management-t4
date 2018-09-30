@@ -29,6 +29,11 @@
     right:51%;
 }
 
+.modal-header {
+    background-color: #428bca;
+    color:white;
+}
+
 .icon-placeholder {
     padding:10px;
     font-family: FontAwesome, "Open Sans", Verdana, sans-serif;
@@ -217,7 +222,7 @@ hr.redline {
 }
 
 .bg-color {
-	background-color: rgba(247, 147, 26, 0.5);
+	background-color: rgba(150, 150, 200, 0.4);
 	min-height: 650px;
 }
 
