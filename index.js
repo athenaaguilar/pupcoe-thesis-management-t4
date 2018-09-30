@@ -1,16 +1,18 @@
 const express = require('express');
 const path = require('path');
 const exphbs = require('express-handlebars');
-const { Client } = require('pg');
+const session = require('express-session');
+const bodyParser = require('body-parser')
+const flash = require('express-flash');
+const cookieParser = require('cookie-parser');
+const { check, validationResult } = require('express-validator/check');
 
-// instantiate client using your DB configurations
-const client = new Client({
-	database: 'storedb',
-	user: 'postgres',
-	password: '123',
-	host: 'localhost',
-	port: 5432
-});
+const db = require('./db/db.js')
+const admin = require('./models/admin.js')
+
+const passport = require('passport');
+const Strategy = require('passport-local').Strategy;
+const bcrypt = require('bcryptjs');
 
 const app = express();
 // tell express which folder is a static/public folder
@@ -24,76 +26,278 @@ app.set('view engine','handlebars');
 app.set('port',(process.env.PORT|| 3000));
 app.use(express.static(path.join(__dirname, 'public')));
 
+//body-parser
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }))
+// parse application/json
+app.use(bodyParser.json())
+app.use(express.json());
+
+//session
+app.use(session({
+  secret: 'cpethesismanagement',
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: false }
+}));
+
+// Passport init
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.use(cookieParser('secret'));
+app.use(flash());
+
+// Global Vars
+app.use(function (req, res, next) {
+  res.locals.success_msg = req.flash('success_msg');
+  res.locals.error_msg = req.flash('error_msg');
+  res.locals.error = req.flash('error');
+  res.locals.user = req.user || null;
+  next();
+});
+
+passport.use(new Strategy({
+  usernameField: 'email',
+  passwordField: 'password'
+},
+  function(email, password, cb) {
+    admin.getByEmail(email, function(user) {
+      if (!user) { return cb(null, false); }
+      bcrypt.compare(password, user.password).then(function(res) {
+      if (res == false) { return cb(null, false); }
+      return cb(null, user);
+      });
+
+   });
+}));
+
+passport.serializeUser(function(user, cb){
+  cb(null, user.id);
+});
+
+passport.deserializeUser(function(id, cb) {
+  admin.getById(id, function (user) {
+    cb(null, user);
+  });
+});
+function isAdmin(req, res, next) {
+   if (req.isAuthenticated()) {
+  admin.getById(req.user.id,function(user){
+    role = user.user_type;
+    console.log('role:',role);
+    if (role == 'admin') {
+        return next();
+    }
+    else{
+      res.send('cannot access!');
+    }
+  });
+  }
+  else{
+res.redirect('/login');
+	}
+}
+function isFaculty(req, res, next) {
+   if (req.isAuthenticated()) {
+  admin.getById(req.user.id,function(user){
+    role = user.user_type;
+    console.log('role:',role);
+    if (role == 'faculty') {
+        return next();
+    }
+    else{
+      res.send('cannot access!');
+    }
+  });
+  }
+  else{
+res.redirect('/login');
+}
+}
+function isAdviser(req, res, next) {
+   if (req.isAuthenticated()) {
+  admin.getById(req.user.id,function(user){
+    role = user.user_type;
+    console.log('role:',role);
+    if (role == 'admin') {
+        return next();
+    }
+    else{
+      res.send('cannot access!');
+    }
+  });
+  }
+  else{
+res.redirect('/login');
+}
+}
+
+function isStudent(req, res, next) {
+   if (req.isAuthenticated()) {
+  admin.getById(req.user.id,function(user){
+    role = user.user_type;
+    console.log('role:',role);
+    if (role == 'student') {
+        return next();
+    }
+    else{
+      res.send('cannot access!');
+    }
+  });
+  }
+  else{
+res.redirect('/login');
+}
+}
+function isGuest(req, res, next) {
+   if (req.isAuthenticated()) {
+  admin.getById(req.user.id,function(user){
+    role = user.user_type;
+    console.log('role:',role);
+    if (role == 'guest') {
+        return next();
+    }
+    else{
+      res.send('cannot access!');
+    }
+  });
+  }
+  else{
+res.redirect('/login');
+}
+}
+//RAAAALLLLPPPHHHHHHHHHHHHHHH!
+
+
 //--------------------------------------------------
+app.get('/logout', function(req, res){
+  req.logout();
+  res.redirect('/');
+});
+
 app.get('/', function (req, res) {
   res.render('home', { });
 });
 
 app.get('/home', function(req, res) {
 	res.render('home',{
-		published: true
+		
 	});
 });
 
 app.get('/forgot_password', function(req, res) {
 	res.render('forgot_password',{
-		published: true
+		
 	});
 });
 
 app.get('/compendium', function(req, res) {
 	res.render('compendium',{
-		published: true
+		
 	});
 });
 //--------------------------------------------------
 
 //ADMIN---------------------------------------------
-app.get('/admin/login', function(req, res) {
+app.get('/login', function(req, res) {
 	res.render('cpe_admin/admin_login',{
-		published: true
+		
 	});
 });
 
-app.get('/admin/dashboard', function(req, res) {
+app.post('/login', 
+  passport.authenticate('local', { failureRedirect: '/login' }),
+  function(req, res) {
+  admin.getById(req.user.id,function(user){
+    role = user.user_type;
+    console.log('role:',role);
+    if (role == 'admin') {
+        res.redirect('/admin/dashboard')
+    }
+    else if (role == 'student'){
+        res.redirect('/students/home')
+    }
+    else if (role == 'faculty'){
+        res.redirect('/faculty/dashboard')
+    }
+ 		 });
+  });
+
+app.get('/admin/dashboard',isAdmin, function(req, res) {
 	res.render('cpe_admin/admin_dashboard',{
-		published: true
+		
 	});
 });
 
 app.get('/admin/registration', function(req, res) {
-	res.render('cpe_admin/admin_registration',{
-		published: true
+	admin.sectionList({},function(result){
+			res.render('cpe_admin/admin_registration',{
+				class: result
+	});
+	});
+
+});
+
+app.post('/admin/registration', function (req, res) {
+
+		bcrypt.genSalt(10, function(err, salt) {
+    bcrypt.hash(req.body.password, salt, function(err, hash) {
+         admin.createUser(
+		  {
+		    firstName: req.body.fname,
+		    middleName: req.body.mname,
+		    lastName: req.body.lname, 
+		    contactNo: req.body.contacts,
+		    email: req.body.email,
+		    userType: req.body.usertype,
+		    password: hash
+		  },
+		  function(id){
+		  	console.log(id[0].id)
+		 	if (req.body.usertype == "student"){
+         admin.insertStudent(
+		  {
+		    userid: id[0].id,
+		    classid: req.body.class
+		  },
+		  function(callback){;
+		 	  });
+	}
+		    res.redirect('/admin/registration');
+		 	  });
+	   });
 	});
 });
 
+
 app.get('/admin/students', function(req, res) {
 	res.render('cpe_admin/admin_students',{
-		published: true
+		
 	});
 });
 
 app.get('/admin/faculty', function(req, res) {
 	res.render('cpe_admin/admin_faculty',{
-		published: true
+		
 	});
 });
 
 app.get('/admin/guest_panel', function(req, res) {
 	res.render('cpe_admin/admin_guest_panel',{
-		published: true
+		
 	});
 });
 
 app.get('/admin/schedule', function(req, res) {
 	res.render('cpe_admin/admin_schedule',{
-		published: true
+		
 	});
 });
 
 app.get('/admin/settings', function(req, res) {
 	res.render('cpe_admin/admin_account_settings',{
-		published: true
+		
 	});
 });
 //ADMIN---------------------------------------------
@@ -101,169 +305,169 @@ app.get('/admin/settings', function(req, res) {
 //FACULTY---------------------------------------------
 app.get('/faculty/dashboard', function(req, res) {
 	res.render('cpe_faculty/faculty_dashboard',{
-		published: true
+		
 	});
 });
 
 app.get('/faculty/proposals', function(req, res) {
 	res.render('cpe_faculty/faculty_proposals',{
-		published: true
+		
 	});
 });
 
 app.get('/faculty/mor', function(req, res) {
 	res.render('cpe_faculty/faculty_mor',{
-		published: true
+		
 	});
 });
 
 app.get('/faculty/dp1', function(req, res) {
 	res.render('cpe_faculty/faculty_dp_1',{
-		published: true
+		
 	});
 });
 
 app.get('/faculty/dp2', function(req, res) {
 	res.render('cpe_faculty/faculty_dp_2',{
-		published: true
+		
 	});
 });
 
 app.get('/faculty/schedule', function(req, res) {
 	res.render('cpe_faculty/faculty_schedule',{
-		published: true
+		
 	});
 });
 
 app.get('/faculty/settings', function(req, res) {
 	res.render('cpe_faculty/faculty_account_settings',{
-		published: true
+		
 	});
 });
 //FACULTY---------------------------------------------
 
 //ADVISER---------------------------------------------
 app.get('/adviser/dashboard', function(req, res) {
-	res.render('cpe_adviser/adviser_dashboard',{
-		published: true
-	});
+  res.render('cpe_adviser/adviser_dashboard',{
+
+  });
 });
 
 app.get('/adviser/proposals', function(req, res) {
-	res.render('cpe_adviser/adviser_proposals',{
-		published: true
-	});
+  res.render('cpe_adviser/adviser_proposals',{
+
+  });
 });
 
 app.get('/adviser/mor', function(req, res) {
-	res.render('cpe_adviser/adviser_mor',{
-		published: true
-	});
+  res.render('cpe_adviser/adviser_mor',{
+
+  });
 });
 
 app.get('/adviser/dp1', function(req, res) {
-	res.render('cpe_adviser/adviser_dp_1',{
-		published: true
-	});
+  res.render('cpe_adviser/adviser_dp_1',{
+
+  });
 });
 
 app.get('/adviser/dp2', function(req, res) {
-	res.render('cpe_adviser/adviser_dp_2',{
-		published: true
-	});
+  res.render('cpe_adviser/adviser_dp_2',{
+
+  });
 });
 
 app.get('/adviser/schedule', function(req, res) {
-	res.render('cpe_adviser/adviser_schedule',{
-		published: true
-	});
+  res.render('cpe_adviser/adviser_schedule',{
+
+  });
 });
 
 app.get('/adviser/settings', function(req, res) {
-	res.render('cpe_adviser/adviser_account_settings',{
-		published: true
-	});
+  res.render('cpe_adviser/adviser_account_settings',{
+
+  });
 });
 //ADVISER---------------------------------------------
 
 //GUEST PANEL---------------------------------------------
 app.get('/guest_panel/home', function(req, res) {
 	res.render('cpe_guest_panel/guest_panel_home',{
-		published: true
+		
 	});
 });
 
 app.get('/guest_panel/mor', function(req, res) {
 	res.render('cpe_guest_panel/guest_panel_mor',{
-		published: true
+		
 	});
 });
 
 app.get('/guest_panel/dp1', function(req, res) {
 	res.render('cpe_guest_panel/guest_panel_dp_1',{
-		published: true
+		
 	});
 });
 
 app.get('/guest_panel/dp2', function(req, res) {
 	res.render('cpe_guest_panel/guest_panel_dp_2',{
-		published: true
+		
 	});
 });
 
 app.get('/guest_panel/schedule', function(req, res) {
 	res.render('cpe_guest_panel/guest_panel_schedule',{
-		published: true
+		
 	});
 });
 
 app.get('/guest_panel/settings', function(req, res) {
 	res.render('cpe_guest_panel/guest_panel_account_settings',{
-		published: true
+		
 	});
 });
 //GUEST PANEL---------------------------------------------
 
 //STUDENT---------------------------------------------
-app.get('/students/home', function(req, res) {
+app.get('/students/home', isStudent, function(req, res) {
 	res.render('cpe_students/students_home',{
-		published: true
+		
 	});
 });
 
 app.get('/students/mor', function(req, res) {
 	res.render('cpe_students/students_mor',{
-		published: true
+		
 	});
 });
 
 app.get('/students/dp1', function(req, res) {
 	res.render('cpe_students/students_dp_1',{
-		published: true
+		
 	});
 });
 
 app.get('/students/dp2', function(req, res) {
 	res.render('cpe_students/students_dp_2',{
-		published: true
+		
 	});
 });
 
 app.get('/students/schedule', function(req, res) {
 	res.render('cpe_students/students_schedule',{
-		published: true
+		
 	});
 });
 
 app.get('/students/adviser', function(req, res) {
 	res.render('cpe_students/students_adviser',{
-		published: true
+		
 	});
 });
 
 app.get('/students/settings', function(req, res) {
 	res.render('cpe_students/students_account_settings',{
-		published: true
+		
 	});
 });
 //STUDENT---------------------------------------------

@@ -34,57 +34,54 @@
               <div class="container">
                 <div class="row justify-content-center align-items-center">
                   <div class="col-md-9 col-sm-9">
-                    <form method="POST" action="reg">
+                    <form method="POST" action="/admin/registration">
                       <!--usertype class batch-->
                       <div class="row form-group">
                         <div class="col-sm-6">
-                          <select style="height: 2.5em" class="form-control gray" name="class" id="user_type" required>
-                            <option value="" hidden>Usertype</option>
-                            <option value ="student">Student</option>
+                          <label class="sr-only" for="user_class">Usertype</label>
+                          <select style="height: 2.5em" class="form-control gray" name="usertype" id="user_type" required>
+                            <option hidden>Usertype</option>
+                            <option value ="student" >Student</option>
                             <option value ="faculty">Faculty</option>
-                            <option value ="guest_panel">Guest Panel</option>
+                            <option value ="guest">Guest Panel</option>
                             <option value ="admin">Admin</option>
                           </select>
                         </div>
                         <div class="col-sm-6">
-                          <select style="height: 2.5em" class="form-control gray" name="class" id="user_class" disabled="" required>
+                          <label class="sr-only" for="user_class">Class</label>
+                          <select style="height: 2.5em" class="form-control gray" name="class" id="user_class" required>
                             <option hidden>Class</option>
-                            <option value ="1">1 </option>
-                            <option value ="2">2</option>
-                            <option value ="3">3</option>
-                            <option value ="4">4</option>
-                            <option value ="4">5</option>
+                            {{#each class}}
+                            <option value ="{{this.id}}">{{this.section}} </option>
+                            {{/each}}  
                           </select>
                         </div>
                       </div><!--usertype class batch-->
                       <div class="form-group">
+                         <label class="sr-only" for="first_name">First Name</label>
                          <input type="name" name="fname" class="form-control" id="first_name" placeholder="First Name" required>
                       </div>
                       <div class="form-group">
-                         <input type="name" name="mname" class="form-control" id="middle_name" placeholder="Middle Name" required>
+                         <label class="sr-only" for="last_name">Middle Name</label>
+                         <input type="name" name="mname" class="form-control" id="last_name" placeholder="Middle Name" required>
                       </div>
                       <div class="form-group">
+                         <label class="sr-only" for="last_name">Last Name</label>
                          <input type="name" name="lname" class="form-control" id="last_name" placeholder="Last Name" required>
                       </div>
                       <div class="form-group">
+                         <label class="sr-only" for="contact_number">Contact Number</label>
                          <input type="number" name="contacts" class="form-control" id="contact_number" placeholder="Contact Number" required>
                       </div>
                       <div class="form-group">
+                         <label class="sr-only" for="email_address">Email Address</label>
                          <input type="email" name="email" class="form-control" id="email_address" placeholder="Email Address" required>
                       </div>
-                      <div class="form-group">
-                         <input type="text" name="username" class="form-control" id="user_username" placeholder="Username" required>
-                      </div>
                       <div class="form-group input-group">
-                         <input type="password" name="password1" class="form-control" id="user_password1" placeholder="Password" required>
+                         <label class="sr-only" for="user_password">Password</label>
+                         <input type="password" name="password" class="form-control" id="user_password" placeholder="Password" required>
                          <div class="input-group-addon">
-                            <span toggle="#user_password1" class="fa fa-fw fa-eye see-pw toggle-password"></span>
-                         </div>
-                      </div>
-                      <div class="form-group input-group">
-                         <input type="password" name="password2" class="form-control" id="user_password2" placeholder="Confirm Password" required>
-                         <div class="input-group-addon">
-                            <span toggle="#user_password2" class="fa fa-fw fa-eye see-pw toggle-password"></span>
+                            <span toggle="#user_password" class="fa fa-fw fa-eye see-pw toggle-password"></span>
                          </div>
                       </div>
                       <div class="form-group">
@@ -147,11 +144,13 @@
 <script type="text/javascript" src="../../js/seepassword.js"></script>
 
 <script type="text/javascript">
+$(function() {
   $("#user_type").change(function() {
-    if ($(this).val() == "student") {
-      $("#user_class").prop("disabled", false);
-    }
-    else
-      $("user_class").prop("disabled", true);
+      if ($(this).val() == "student") {
+          $("#user_class").prop("disabled", false);
+      }
+      else
+          $("#user_class").prop("disabled", true);
   });
-</script>
+});
+</script>;
