@@ -28,7 +28,7 @@
                   <td>1</td>
                   <td></td>
                   <td>
-                    <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#update"><i class="fa fa-eye"></i></button>
+                    <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#update"><i class="fa fa-pencil"></i></button>
                     <button type="button" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button>
                   </td>
                   </tr>
@@ -53,27 +53,38 @@
         </button>
       </div>
       <div class="modal-body">
-        <div class="form-group">
-          Name
+        <form method="post" action="/students/settings">
           <div class="form-group">
-             <input type="text" name="name" class="form-control" value="Name from Database" placeholder="Your name here" disabled>
+            First Name
+            <div class="form-group">
+               <input type="text" name="fname" class="form-control" value="First Name from Database" placeholder="First name here">
+            </div>
+            Middle Name
+            <div class="form-group">
+               <input type="text" name="mname" class="form-control" value="Middle Name from Database" placeholder="Middle name here">
+            </div>
+            Last Name
+            <div class="form-group">
+               <input type="text" name="lname" class="form-control" value="Last Name from Database" placeholder="Last name here">
+            </div>
+            Contact Number
+            <div class="form-group">
+               <input type="text" name="contacts" class="form-control" value="Contact Number from Database" placeholder="Your contact number here">
+            </div>
+            Email Address
+            <div class="form-group">
+               <input type="text" name="email" class="form-control" value="Email Address from Database" placeholder="Your email address here">
+            </div>
+            Username
+            <div class="form-group">
+               <input type="text" name="username" class="form-control" value="Username from Database" placeholder="Your username here">
+            </div>
+            <div class="pull-right">
+              <button type="button" class="btn btn-success btn-sm" data-dismiss="modal" id="loading" data-loading-text="<i class='fa fa-spinner fa-spin '></i> Please wait..."> Update</button>
+              <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
+            </div>
           </div>
-          Contact Number
-          <div class="form-group">
-             <input type="text" name="contacts" class="form-control" value="Contact Number from Database" placeholder="Your contact number here" disabled>
-          </div>
-          Email Address
-          <div class="form-group">
-             <input type="text" name="email" class="form-control" value="Email Address from Database" placeholder="Your email address here" disabled>
-          </div>
-          Username
-          <div class="form-group">
-             <input type="text" name="username" class="form-control" value="Username from Database" placeholder="Your username here" disabled>
-          </div>
-          <div class="pull-right">
-            <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
-          </div>
-        </div>
+        </form>
       </div>
     </div>
   </div>
