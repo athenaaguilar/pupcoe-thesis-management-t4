@@ -391,7 +391,7 @@ app.get('/adviser/mor', function(req, res) {
   });
   adviser.classList({id:req.user.id},function(classList){
      adviser.groupList({id:class_id},function(result){
-    res.render('cpe_adviser/adviser_mor1',{
+    res.render('cpe_adviser/adviser_mor',{
     classList:classList,
     classid:class_id,
     groupList: result
