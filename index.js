@@ -9,6 +9,7 @@ const { check, validationResult } = require('express-validator/check');
 
 const db = require('./db/db.js')
 const admin = require('./models/admin.js')
+const adviser = require('./models/adviser.js')
 
 const passport = require('passport');
 const Strategy = require('passport-local').Strategy;
@@ -74,6 +75,7 @@ passport.use(new Strategy({
 
 passport.serializeUser(function(user, cb){
   cb(null, user.id);
+
 });
 
 passport.deserializeUser(function(id, cb) {
@@ -83,6 +85,7 @@ passport.deserializeUser(function(id, cb) {
 });
 function isAdmin(req, res, next) {
    if (req.isAuthenticated()) {
+      console.log(req.user);
   admin.getById(req.user.id,function(user){
     role = user.user_type;
     console.log('role:',role);
@@ -177,12 +180,12 @@ app.get('/logout', function(req, res){
 });
 
 app.get('/', function (req, res) {
-  res.render('home', { });
+  res.render('home', {
+  });
 });
 
 app.get('/home', function(req, res) {
 	res.render('home',{
-		
 	});
 });
 
@@ -211,8 +214,11 @@ app.post('/login',
   function(req, res) {
   admin.getById(req.user.id,function(user){
     role = user.user_type;
+    req.session.user = user;
+      console.log(req.session.user);
     console.log('role:',role);
     if (role == 'admin') {
+
         res.redirect('/admin/dashboard')
     }
     else if (role == 'student'){
@@ -231,16 +237,18 @@ app.get('/admin/dashboard',isAdmin, function(req, res) {
 });
 
 app.get('/admin/registration', function(req, res) {
-	admin.sectionList({},function(result){
-			res.render('cpe_admin/admin_registration',{
-				class: result
-	});
-	});
 
+  admin.sectionList({},function(classList){
+  	admin.facultyList({},function(facultyList){
+  			res.render('cpe_admin/admin_registration',{
+  				class: classList,
+          faculty: facultyList
+    	    });
+    	 });
+    });
 });
 
-app.post('/admin/registration', function (req, res) {
-
+app.post('/admin/registration/user', function (req, res) {
 		bcrypt.genSalt(10, function(err, salt) {
     bcrypt.hash(req.body.password, salt, function(err, hash) {
          admin.createUser(
@@ -269,6 +277,20 @@ app.post('/admin/registration', function (req, res) {
 	   });
 	});
 });
+
+app.post('/admin/registration/class', function (req, res) {
+
+  admin.createClass(
+      {
+        section: req.body.class_no,
+        adviserid: req.body.adviser,
+        acadyear: req.body.acad_year,
+
+      },
+      function(callback){
+        res.redirect('/admin/registration');
+        });
+     });
 
 
 app.get('/admin/students', function(req, res) {
@@ -304,6 +326,7 @@ app.get('/admin/settings', function(req, res) {
 
 //FACULTY---------------------------------------------
 app.get('/faculty/dashboard', function(req, res) {
+  console.log(req.session.user.last_name)
 	res.render('cpe_faculty/faculty_dashboard',{
 		
 	});
@@ -360,9 +383,48 @@ app.get('/adviser/proposals', function(req, res) {
 });
 
 app.get('/adviser/mor', function(req, res) {
-  res.render('cpe_adviser/adviser_mor',{
+  var class_id;
+  var group_list;
+  adviser.classId({id:req.user.id},function(result){
+      class_id = result[0].id;
 
   });
+  adviser.classList({id:req.user.id},function(classList){
+     adviser.groupList({id:class_id},function(result){
+    res.render('cpe_adviser/adviser_mor1',{
+    classList:classList,
+    classid:class_id,
+    groupList: result
+  });
+
+   });
+
+  });
+});
+
+app.post('/adviser/mor', function (req, res) {
+  var studentid = req.body.studentid;
+  var groupData  = "";
+
+
+    adviser.createGroup(
+      {
+        groupName: req.body.groupName,
+        classid: req.body.classid
+      },
+      function(id){  
+      for (var i = 0; i < studentid.length;i++){
+      groupData = groupData + "('"+id[0].id+"','"+studentid[i]+"')"+",";
+     }
+     groupData = groupData.slice(0,-1);
+     console.log(groupData);
+      adviser.insertMembers(groupData ,
+      function(callback){
+       });
+
+       res.redirect('/adviser/mor');
+       });
+
 });
 
 app.get('/adviser/dp1', function(req, res) {
