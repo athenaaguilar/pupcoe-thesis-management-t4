@@ -110,7 +110,7 @@ var actions = {
   },
     listThesis: (filter,callback) => {
     const query =
-    `select thesis.id,thesis_title,group_id,current_stage,abstract,current_stage,groups.class_id, class.adviser_id from thesis
+    `select thesis.id,thesis_title,group_id,thesis.upload,current_stage,abstract,current_stage,groups.class_id, class.adviser_id from thesis
       inner join groups on groups.id = group_id
       inner join class on class.id = groups.class_id
     where current_stage = ${filter.currentstage} 
