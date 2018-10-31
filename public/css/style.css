@@ -1,3 +1,7 @@
+.inline_block button, .inline_block form {
+    display: inline-block;
+}
+
 /***************************************table row number***************************************/
 table {
     counter-reset: rowNumber;

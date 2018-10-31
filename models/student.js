@@ -3,7 +3,7 @@ const db = require('../db/db.js')
 var actions = {
     studentGroupmates: (group_id,callback) => {
     const query =
-    `SELECT group_members.group_id, groups.group_name, users.first_name, users.middle_name, users.last_name, users.contact_no, users.email
+    `SELECT group_members.group_id, groups.group_name, users.first_name, users.middle_name, users.last_name, users.contact_no, users.email,users.image
       FROM group_members
       INNER JOIN groups ON groups.id = group_id
       INNER JOIN users ON users.id = group_members.user_id
@@ -93,6 +93,16 @@ var actions = {
       console.log(e)
       callback(e)
     })
-  },
+  },  
+   uploadImage: (filter,callback) => {
+    const query =
+    `update users set image = '${filter.image}' where id = '${filter.id}'`;
+     db.query(query)
+    .then(res => callback(res))
+    .catch(e => {
+      console.log(e)
+      callback(e)
+    })
+  }
 }
 module.exports = actions

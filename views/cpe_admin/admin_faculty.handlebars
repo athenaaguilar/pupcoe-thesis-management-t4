@@ -108,13 +108,16 @@
                 </thead>
                 <tbody>
                   {{#each committee}}
+                <form method="POST" action="/admin/committee/remove">
+                  <input name="committee_id" value="{{id}}" hidden>
                   <tr class="center">
                     <td></td>
                     <td>{{prefix}} {{first_name}} {{middle_name}} {{last_name}}</td>
                     <td>
-                      <button type="button" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button>
+                      <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button>
                     </td>
                   </tr>
+                </form>
                   {{/each}}
                 </tbody>
               </table>

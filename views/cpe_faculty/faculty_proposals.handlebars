@@ -37,7 +37,7 @@
                       <th style="width: 10%">Number</th>
                       <th style="width: 10%">Members</th>
                       <th>Title</th>
-                      <th style="width: 20%">Action</th>
+                      <th style="width: 25%">Action</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -48,11 +48,11 @@
                       <td class="title">{{this.thesis_title}}</td>
                       <td class="thesis_id" hidden>{{this.id}}</td>
                       <td class="abstract" hidden>{{this.abstract}}</td>
-                      <td>
+                      <td class="inline_block">
                         <button type="button" class="onCLick btn btn-success btn-sm" data-toggle="modal" data-target="#review"><i class="fa fa-eye"></i> Review</button>
-                         <form action="/downloadFile" method="post">
+                        <form action="/downloadFile" method="post">
                           <input type = "name" name="filename" value ="{{this.upload}}" hidden>
-                        <button type="submit" class="btn btn-primary btn-sm"><i class="fas fa-download"></i> Download</button>
+                          <button type="submit" class="btn btn-primary btn-sm"><i class="fas fa-download"></i> Download</button>
                         </form>
                       </td>
                     </tr>
@@ -120,11 +120,8 @@
             </div>
             <div class="form-group">           
              <input type = "number" name="thesis_id" id= "thesis_id0" value = "" hidden>
-             <select style="height: 2.5em" class="form-control gray" name="grade" class="form-control" id="user_class" required>
-                <option hidden>Status</option>
-                <option value ="9">Approved</option>
-                <option value ="10">Disapproved</option>
-             </select>
+             <input type="radio" name="grade" value="9"> Approved<br>
+             <input type="radio" name="grade" value="10">Disapproved
             </div>
             <div class="pull-right footer">
               <button type="submit" class="btn btn-success btn-sm" id="loading" data-loading-text="<i class='fa fa-spinner fa-spin '></i> Please wait...">Done</button>

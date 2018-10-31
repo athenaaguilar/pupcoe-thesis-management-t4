@@ -280,6 +280,21 @@ var actions = {
     })
 
     },
+    removeCommittee: (filter,callback) => {
+    const query =
+    `DELETE FROM
+      committee_members
+      WHERE
+        faculty_id = '${filter.committee_id}'
+      `;
+     db.query(query)
+    .then(res => callback(res))
+    .catch(e => {
+      console.log(e)
+      callback(e)
+    })
+
+    },
     totalAccounts: (filter,callback) => {
     const query =
     `SELECT COUNT(*) AS count FROM users;

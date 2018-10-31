@@ -57,7 +57,7 @@
                     <select style="height: 2.5em" class="form-control gray" name="class" id="user_class" required>
                       <option hidden>Section</option>
                       {{#each class}}
-                      <option value ="{{this.id}}">Section: {{this.section}} Batch:{{batch_year}} </option>
+                      <option value ="{{this.id}}">Section: {{this.section}} Batch: {{batch_year}} </option>
                       {{/each}}  
                     </select>
                   </div>
@@ -110,11 +110,18 @@
                 <div class="row form-group">
                   <div class="col-sm-6">
                     Section
-                    <input type="number" name="class_no" class="form-control" id="class_no" placeholder="Section" required>
+                    <input name="class_no" class="form-control" id="class_no" placeholder="Section" required>
                   </div>
                   <div class="col-sm-6">
                     Batch
-                    <input type="text" name="acad_year" class="form-control" id="acad_year" placeholder="Batch" required>
+                    <select style="height: 2.5em" class="form-control gray" name="acad_year" id="acad_year" required>
+                      <option hidden>Batch</option>
+                      <option value="">2014</option>
+                      <option value="">2015</option>
+                      <option value="">2016</option>
+                      <option value="">2017</option>
+                      <option value="">2018</option>
+                    </select>
                   </div>
                 </div>
                 <div class="form-group">

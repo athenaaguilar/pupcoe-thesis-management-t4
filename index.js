@@ -6,10 +6,16 @@ const bodyParser = require('body-parser')
 const flash = require('express-flash-messages');
 const expressValidator = require('express-validator');
 const multer = require('multer');
-const upload = multer({
-  dest: 'uploads/' // this saves your file into a directory called "uploads"
-}); 
 
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, 'public/uploads/')
+  },
+  filename: function (req, file, cb) {
+    cb(null, file.originalname)
+  }
+})
+const upload = multer({storage: storage})
 const db = require('./db/db.js')
 const admin = require('./models/admin.js')
 const adviser = require('./models/adviser.js')
@@ -239,6 +245,9 @@ app.post('/login',
     else if (role == 'faculty'){
         res.redirect('/faculty/dashboard')
     }
+    else if (role == 'guest'){
+        res.redirect('/guest_panel/home')
+    }
  		 });
   });
 
@@ -391,6 +400,17 @@ app.get('/admin/faculty', function(req, res) {
         });
      });
   });
+});
+
+app.post('/admin/committee/remove', function(req, res) {
+  admin.removeCommittee(
+    {
+      user_id: req.user.id,
+      committee_id: req.body.committee_id
+    },
+    function(callback){
+      res.redirect('/admin/faculty');
+    });
 });
 
 app.post('/admin/committee/add', function(req, res) {
@@ -564,7 +584,7 @@ app.get('/faculty/mor',  isFaculty,function(req, res) {
 });
 
 app.post('/downloadFile', function (req, res) {
-   var file = 'uploads/'+ req.body.filename
+   var file = 'public/uploads/'+ req.body.filename
    res.download(file, function (err) {
        if (err) {
            console.log("Error");
@@ -707,7 +727,7 @@ app.get('/faculty/settings', isFaculty, function(req, res) {
 app.get('/students/home', isStudent, function(req, res) {
   student.studentGroupmates({group_id:req.session.group_id}, function(group_id) {
     student.studentAdviser({student_id: req.user.id}, function(studentAdviser) {
-      console.log(studentAdviser);
+      console.log(req.user.image);
       res.render('cpe_students/students_home',{  
         first_name: req.user.first_name,
         middle_name: req.user.middle_name,
@@ -717,10 +737,26 @@ app.get('/students/home', isStudent, function(req, res) {
         adviser_last_name:    studentAdviser.rows[0].last_name,
         batch_year:           studentAdviser.rows[0].batch_year,
         section:              studentAdviser.rows[0].section,
+        image: req.user.image,
         group_id: group_id.rows
       });
     });
   });
+});
+
+app.post('/students/upload/image',isStudent, upload.single('file-to-upload'), function (req, res) {
+    console.log('The filename is ' + res.req.file.filename);
+    student.uploadImage(
+      {
+        id: req.user.id,
+        image: res.req.file.filename
+
+      },
+      function(callback){  
+        console.log(callback)
+       res.redirect('/students/home');
+       
+       });
 });
 
 app.get('/students/mor',isStudent, function(req, res) {
@@ -839,7 +875,7 @@ app.get('/students/settings', isStudent,function(req, res) {
 //STUDENT---------------------------------------------
 
 //GUEST PANEL---------------------------------------------
-app.get('/guest_panel/home', function(req, res) {
+app.get('/guest_panel/home',isGuest,function(req, res) {
   res.render('cpe_guest_panel/guest_panel_home',{
         first_name: req.user.first_name,
         middle_name: req.user.middle_name,
